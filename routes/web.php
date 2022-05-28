@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +21,18 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('front');
-});
+// Route::get('/', function () {
+//     return view('front');
+// });
+Route::get('/', [FrontController::class, 'beranda']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/beranda', [FrontController::class, 'beranda']);
+Route::get('/tentang-kami', [FrontController::class, 'tentang']);
+Route::get('/acara', [FrontController::class, 'acara']);
+Route::get('/hubungi-kami', [FrontController::class, 'hubungi']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');

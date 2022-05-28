@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>FlexStart Bootstrap Template - Index</title>
+    <title>Pokdakan</title>
     <meta content="" name="description">
   
     <meta content="" name="keywords">
@@ -24,6 +24,12 @@
   
     <!-- Template Main CSS File -->
     <link href="{{ asset('web/css/style.css')}}" rel="stylesheet">
+    <style type="text/css">
+      .left    { text-align: left;}
+      .right   { text-align: right;}
+      .center  { text-align: center;}
+      .justify { text-align: justify;}
+   </style>
   
     <!-- =======================================================
     * Template Name: FlexStart - v1.9.0

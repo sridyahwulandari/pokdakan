@@ -4,32 +4,35 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('web/img/logo.png')}}" alt="">
-        <span>FlexStart</span>
+        <span>POKDAKAN</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+          <li><a class="{{ Request::is('beranda*') ? 'active font-bold' : ''}}" href="/beranda">Beranda</a></li>
+          <li><a class="{{ Request::is('tentang-kami*') ? 'active font-bold' : ''}}" href="/tentang-kami">Tentang Kami</a></li>
           <li class="dropdown"><a href="#"><span>Produk</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Ikan Air Tawar</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">Ikan Bandeng</a></li>
+                  <li><a href="#">Ikan Kakap Putih</a></li>
+                  <li><a href="#">Ikan Bawal</a></li>
+                  <li><a href="#">Ikan Mujair</a></li>
+                  <li><a href="#">Ikan Nila</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li class="dropdown"><a href="#"><span>Ikan Air Payau</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Ikan Lele</a></li>
+                  <li><a href="#">Ikan Mas</a></li>
+                  <li><a href="#">Ikan Gurame</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#portfolio">Karir</a></li>
-          <li><a class="nav-link scrollto" href="#team">Hubungi Kami</a></li>
+          <li><a class="{{ Request::is('acara*') ? 'active font-bold' : ''}}" href="/acara">Acara</a></li>
+          <li><a class="{{ Request::is('hubungi-kami*') ? 'active font-bold' : ''}}" href="/hubungi-kami">Hubungi Kami</a></li>
           <li><a class="getstarted scrollto" href="{{ route('login')}}">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -37,28 +40,3 @@
 
     </div>
   </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Get Started</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="{{ asset('web/img/hero-img.png')}}" class="img-fluid" alt="">
-        </div>
-      </div>
-    </div>
-
-  </section><!-- End Hero -->

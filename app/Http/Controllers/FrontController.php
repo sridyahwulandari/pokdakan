@@ -10,4 +10,24 @@ class FrontController extends Controller
     {
         return view('front');
     }
+
+    public function beranda()
+    {
+        return view('frontend.beranda.index');
+    }
+
+    public function tentang()
+    {
+        return view('frontend.tentang-kami.index');
+    }
+
+    public function acara()
+    {
+        return view('frontend.acara.index');
+    }
+
+    public function hubungi()
+    {
+        return view('frontend.hubungi-kami.index');
+    }
 }
