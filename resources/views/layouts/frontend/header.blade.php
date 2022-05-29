@@ -32,7 +32,7 @@
             </ul>
           </li>
           <li><a class="{{ Request::is('acara*') ? 'active font-bold' : ''}}" href="/acara">Acara</a></li>
-          <li><a class="{{ Request::is('hubungi-kami*') ? 'active font-bold' : ''}}" href="/hubungi-kami">Hubungi Kami</a></li>
+          <li><a class="{{ Request::is('formemail*') ? 'active font-bold' : ''}}" href="formemail">Hubungi Kami</a></li>
           <li><a class="getstarted scrollto" href="{{ route('login')}}">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

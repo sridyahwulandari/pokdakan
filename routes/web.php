@@ -4,6 +4,7 @@ use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KirimEmailController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
@@ -32,7 +33,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/beranda', [FrontController::class, 'beranda']);
 Route::get('/tentang-kami', [FrontController::class, 'tentang']);
 Route::get('/acara', [FrontController::class, 'acara']);
-Route::get('/hubungi-kami', [FrontController::class, 'hubungi']);
+// Route::get('/hubungi-kami', [FrontController::class, 'hubungi']);
+Route::get('/formemail', [FrontController::class, 'formemail']);
+Route::post('/kirim', [FrontController::class, 'kirim']);
+// Route::get('formemail', [KirimEmailController::class, 'index']);
+// Route::post('kirim', [KirimEmailController::class, 'kirim']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');

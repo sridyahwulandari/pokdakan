@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailSend;
 
 class FrontController extends Controller
 {
@@ -26,8 +28,26 @@ class FrontController extends Controller
         return view('frontend.acara.index');
     }
 
-    public function hubungi()
+    // public function hubungi()
+    // {
+    //     return view('frontend.hubungi-kami.index');
+    // }
+
+    public function formemail()
     {
-        return view('frontend.hubungi-kami.index');
+        return view('frontend.hubungi-kami.formemail');
+    }
+
+    public function kirim(Request $request)
+    {
+        $details = [
+            'nama' => $request->nama,
+            'judul' => $request->judul,
+            'pesan' => $request->pesan
+        ];
+
+        Mail::to($request->email)->send(new MailSend($details));
+
+        return redirect()->back()->with('success', 'Pesan Berhasil Terkirim');
     }
 }
