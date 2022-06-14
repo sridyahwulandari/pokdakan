@@ -59,6 +59,7 @@
 							</span>
 							<h4 class="text-section">Components</h4>
 						</li>
+						@can('user-list')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
@@ -94,6 +95,36 @@
 								</ul>
 							</div>
 						</li>
+						@endcan
+						@can('kategori-list')
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-th-list"></i>
+								<p>Master Data</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									@can('kategori-list')
+									<li>
+										<a href="{{ route('kategori.index') }}">
+											<i class="fas fa-fish"></i>
+											<p>Kategori Ikan</p>
+										</a>
+									</li>
+									@endcan
+									@can('jenis-list')
+									<li>
+										<a href="{{ route('jenis.index') }}">
+											<i class="fas fa-fish"></i>
+											<p>Jenis Ikan</p>
+										</a>
+									</li>
+									@endcan
+								</ul>
+							</div>
+						</li>
+						@endcan
 						@can('post-list')
 						<li class="nav-item">
 							<a href="{{ route('posts.index') }}">
@@ -102,6 +133,19 @@
 							</a>
 						</li>
 						@endcan
+
+						<li class="nav-item">
+							<a href="widgets.html">
+								<i class="fas fa-box"></i>
+								<p>Produk</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="widgets.html">
+								<i class="fas fa-calendar-alt"></i>
+								<p>Acara</p>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

@@ -47,6 +47,9 @@
                             @can('post-list')
                                 <li><a class="nav-link" href="{{ route('posts.index') }}">Posts</a></li>
                             @endcan
+                            @can('kategori-list')
+                            <li><a class="nav-link" href="{{ route('kategori.index') }}">Kategori</a></li>
+                        @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

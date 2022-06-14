@@ -49,4 +49,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
     Route::resource('posts', 'PostController');
+    Route::resource('kategori', 'KategoriController');
+    Route::resource('jenis', 'JenisController');
 });

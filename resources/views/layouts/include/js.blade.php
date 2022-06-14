@@ -35,11 +35,11 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<!-- Atlantis JS -->
-	<script src="{{ asset('assets/js/atlantis.min.js')}}"></script>
+	{{-- <script src="{{ asset('assets/js/atlantis.min.js')}}"></script> --}}
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('assets/js/setting-demo.js')}}"></script>
-	<script src="{{ asset('assets/js/demo.js')}}"></script>
+	{{-- <script src="{{ asset('assets/js/setting-demo.js')}}"></script>
+	<script src="{{ asset('assets/js/demo.js')}}"></script> --}}
 	<script>
 		Circles.create({
 			id:'circles-1',
