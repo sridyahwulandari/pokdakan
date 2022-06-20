@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
+use App\Models\Produk;
 
 class FrontController extends Controller
 {
@@ -26,6 +27,22 @@ class FrontController extends Controller
     public function acara()
     {
         return view('frontend.acara.index');
+    }
+
+    public function produkFront()
+    {
+        $produk = Produk::all();
+        return view('frontend.produk-front.index', [
+            'produk' => $produk,
+        ]);
+    }
+
+    public function produkFrontDetail()
+    {
+        $produk = Produk::all();
+        return view('frontend.produk-front-detail.index', [
+            'produk' => $produk,
+        ]);
     }
 
     // public function hubungi()

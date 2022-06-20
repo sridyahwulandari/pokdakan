@@ -169,7 +169,8 @@ class UserController extends Controller
             'name' => 'required',
             'alamat' => 'required',
             'telepon' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            
         ]);
 
         $user->update($request->all());

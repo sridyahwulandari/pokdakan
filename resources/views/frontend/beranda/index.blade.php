@@ -11,7 +11,7 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Menumbuhkan Ekosistem Akuakultur yang Berkelanjutan</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="https://bit.ly/pokdakan" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Gabung Bersama Kami</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -39,16 +39,29 @@
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
               <div class="box">
                 <img src="{{ asset('web/img/values-1.png')}}" class="img-fluid" alt="">
-                <h3>Solusi Untuk Pembudidaya Ikan Air Tawar</h3>
-                <p class="justify">Ekosistem budidaya ikan air payau, dibangun untuk menigkatkan produktivitas menjaga kualitas air tambak, mencegah wabah, dan merekomendasikan sistem pengelolaan tambak berbasis data, untuk mendukung tambak para pembudidaya ikan air payau</p>
+                <h3>Solusi Untuk Pembudidaya Ikan Air Payau & Ikan Air Tawar</h3>
+                <p class="justify">Ekosistem budidaya ikan air payau dan ikan air tawar, dibangun untuk menigkatkan produktivitas menjaga kualitas air tambak, mencegah wabah, dan merekomendasikan sistem pengelolaan tambak berbasis data, untuk mendukung tambak para pembudidaya ikan air payau</p>
               </div>
             </div>
   
             <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
               <div class="box">
                 <img src="{{ asset('web/img/values-2.png')}}" class="img-fluid" alt="">
-                <h3>Solusi Untuk Pembudidaya Ikan Air Payau</h3>
-                <p class="justify">Ekosistem budidaya ikan air payau, dibangun untuk menigkatkan produktivitas menjaga kualitas air tambak, mencegah wabah, dan merekomendasikan sistem pengelolaan tambak berbasis data, untuk mendukung tambak para pembudidaya ikan air payau</p>
+                <h3>Ikan Air Payau & Ikan Air Tawar</h3>
+                <p class="justify">
+                  Ikan Air Payau adalah ikan yang hidup di air laut. Jenis ikan air payau ini di dekat pesisir sekitar muara sungai
+                </p>
+                * Udang Windu
+                * Ikan Paname
+                * Ikan Bandeng
+                * Ikan Nila
+                <br>
+                <br>
+                <p class="justify">
+                  Ikan Air tawar ialah air yang tidak berasa lawan dari air asin. Merupakan air yang tidak mengandung banyak larutan garam dan larutan mineral di dalamnya.
+                </p>
+                * Ikan Lele
+                * Ikan Gurame
               </div>
             </div>
   

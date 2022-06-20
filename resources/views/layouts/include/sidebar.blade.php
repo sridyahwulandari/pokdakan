@@ -68,6 +68,12 @@
 							</a>
 							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
+									<li>
+										<a href="">
+											<i class="fas fa-user"></i>
+											<p>Admin</p>
+										</a>
+									</li>
 									@can('user-list')
 									<li>
 										<a href="{{ route('users.index') }}">
@@ -125,25 +131,24 @@
 							</div>
 						</li>
 						@endcan
-						@can('post-list')
+						@can('produk-list')
 						<li class="nav-item">
-							<a href="{{ route('posts.index') }}">
-								<i class="fas fa-desktop"></i>
-								<p>Post</p>
-							</a>
-						</li>
-						@endcan
-
-						<li class="nav-item">
-							<a href="widgets.html">
+							<a href="{{ route('produk.index') }}">
 								<i class="fas fa-box"></i>
 								<p>Produk</p>
 							</a>
 						</li>
+						@endcan
 						<li class="nav-item">
-							<a href="widgets.html">
+							<a href="{{ route('acara.index') }}">
 								<i class="fas fa-calendar-alt"></i>
 								<p>Acara</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="widgets.html">
+								<i class="fas fa-fish"></i>
+								<p>Trend Pasar</p>
 							</a>
 						</li>
 					</ul>

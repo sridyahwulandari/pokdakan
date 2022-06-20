@@ -32,6 +32,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/beranda', [FrontController::class, 'beranda']);
 Route::get('/tentang-kami', [FrontController::class, 'tentang']);
+Route::get('/produk-front', [FrontController::class, 'produkFront']);
+Route::get('/produk-front-detail', [FrontController::class, 'produkFrontDetail']);
 Route::get('/acara', [FrontController::class, 'acara']);
 // Route::get('/hubungi-kami', [FrontController::class, 'hubungi']);
 Route::get('/formemail', [FrontController::class, 'formemail']);
@@ -48,7 +50,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/password/change', 'UserController@postPassword')->name('userPostPassword');
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
-    Route::resource('posts', 'PostController');
+    Route::resource('produk', 'ProdukController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('jenis', 'JenisController');
+    Route::resource('acara', 'AcaraController');
 });
