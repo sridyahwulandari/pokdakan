@@ -53,5 +53,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('produk', 'ProdukController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('jenis', 'JenisController');
-    Route::resource('acara', 'AcaraController');
 });

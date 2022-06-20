@@ -140,7 +140,7 @@
 						</li>
 						@endcan
 						<li class="nav-item">
-							<a href="{{ route('acara.index') }}">
+							<a href="">
 								<i class="fas fa-calendar-alt"></i>
 								<p>Acara</p>
 							</a>
