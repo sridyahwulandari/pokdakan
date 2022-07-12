@@ -84,6 +84,10 @@ Profile
                                                 @enderror
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="foto">Foto</label>
+                                                <input type="file" name="foto" class="form-control">
+                                            </div>
 
                                         </div>
                                         <div class="col-12">

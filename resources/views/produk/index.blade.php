@@ -15,7 +15,9 @@
 				<div class="card-header">
 					<div class="card-head-row">
 						<div class="card-title">Data Produk</div>
+                        @can('produk-create')
                         <a href="{{ route('produk.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Produk</a>
+                        @endcan
 					</div>
 				</div>
 				<div class="card-body">
@@ -29,56 +31,51 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Author</th>
                                 <th>Kategori</th>
-                                <th>Jenis Ikan</th>
-                                <th>Slug</th>
+                                <th>Nama Produk</th>
+                                <th>Jenis Pakan</th>
+                                <th>Merk</th>
+                                <th>Kondisi</th>
+                                <th>Berat</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
-                                <th>Alamat</th>
-                                <th>No Tlpn/Wa</th>
-                                <th>Deskripsi</th>
-                                <th>Gambar</th>
-                                <th>Video</th>
-                                <th>Status</th>
+                                <th>Gambar Produk</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($produk as $row)
                             <tr>
-                                <td>{{ $row->id }}</td>
-                                <td>{{ $row->users->name }}</td>
-                                <td>{{ $row->kategori->nama_kategori }}</td>
-                                <td>{{ $row->jenis_ikan }}</td>
-                                <td>{{ $row->slug }}</td>
+                                <td>{{ $row->supplier->bahan_baku }}</td>
+                                <td>{{ $row->nama_produk }}</td>
+                                <td>{{ $row->jenis_pakan }}</td>
+                                <td>{{ $row->merk }}</td>
+                                <td>{{ $row->kondisi }}</td>
+                                <td>{{ $row->berat }}</td>
                                 <td>{{ $row->harga }}</td>
                                 <td>{{ $row->stok }}</td>
-                                <td>{{ $row->alamat }}</td>
-                                <td>{{ $row->notlpn }}</td>
-                                <td>{!! $row->deskripsi !!}</td>
-                                <td><img src=" {{ asset('uploads/' . $row->gambar_produk) }} " width="100"></td>
-                                <td><video src=" {{ asset('uploads/' . $row->video_produk) }} " width="100"></td>
-                                <td>
-                                    @if ($row->status == '1')
-                                        Tersedia
-                                        @else
-                                        Habis
-                                        @endif
-                                </td>
+                                <td><img src=" {{ asset('uploads/' . $row->gambar_produk_supplier) }} " width="100"></td>
                                 <td>
                                     <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Artikel">
+                                        @can('produk-show')
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Detail Produk">
+                                            <a href="{{ route('produk.show', $row->id)}}"><i class="fa fa-eye"></i></a>
+                                        </button>
+                                        @endcan
+                                        @can('produk-edit')
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Produk">
                                             <a href="{{ route('produk.edit', $row->id)}}"><i class="fa fa-edit"></i></a>
                                         </button>
+                                        @endcan
+                                        @can('produk-delete')
                                         <form action="{{ route('produk.destroy', $row->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                         <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
                                             <i class="fa fa-times"></i>
                                         </button>
-                                    </form>
+                                        </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

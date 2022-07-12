@@ -45,6 +45,24 @@
                                     </span>
                                     @enderror
 								</div>
+								<div class="form-group">
+									<label for="alamat">{{ __('Alamat') }}</label>
+                                    <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat" autofocus>
+                                    @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+								</div>
+								<div class="form-group">
+									<label for="telepon">{{ __('telepon') }}</label>
+                                    <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" required autocomplete="telepon" autofocus>
+                                    @error('telepon')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+								</div>
 
                                 <div class="form-group">
 									<label for="password">{{ __('Password') }}</label>

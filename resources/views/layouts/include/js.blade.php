@@ -140,133 +140,32 @@
 	CKEDITOR.replace( 'editor1' );
 </script>
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script src="{{asset('js/jquery.countdown.min.js')}}"></script>
 <script>
-    $('.date').datepicker({
-        autoclose: true,
-        dateFormat: "yy-mm-dd"
-    });
+   ;(function($) {
+     
+    var MERCADO_JS = {
+      init: function(){
+         this.mercado_countdown();
+          
+      }, 
+    mercado_countdown: function() {
+         if($(".mercado-countdown").length > 0){
+                $(".mercado-countdown").each( function(index, el){
+                  var _this = $(this),
+                  _expire = _this.data('expire');
+               _this.countdown(_expire, function(event) {
+                        $(this).html( event.strftime('<span><b>%D</b> Days</span> <span><b>%-H</b> Hrs</span> <span><b>%M</b> Mins</span> <span><b>%S</b> Secs</span>'));
+                    });
+                });
+         }
+      },
+    
+   }
+    
+      window.onload = function () {
+         MERCADO_JS.init();
+      }
+    
+      })(window.Zepto || window.jQuery, window, document);
 </script>
-
-<script>
-
-	$(document).ready(function () {
-	
-		$.ajaxSetup({
-			headers:{
-				'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-			}
-		});
-	
-		var calendar = $('#calendar').fullCalendar({
-			editable:true,
-			header:{
-				left:'prev,next today',
-				center:'title',
-				right:'month,agendaWeek,agendaDay'
-			},
-			events:'/full-calender',
-			selectable:true,
-			selectHelper: true,
-			select:function(start, end, allDay)
-			{
-				var title = prompt('Event Title:');
-	
-				if(title)
-				{
-					var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
-	
-					var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
-	
-					$.ajax({
-						url:"/full-calender/action",
-						type:"POST",
-						data:{
-							title: title,
-							start: start,
-							end: end,
-							type: 'add'
-						},
-						success:function(data)
-						{
-							calendar.fullCalendar('refetchEvents');
-							alert("Event Created Successfully");
-						}
-					})
-				}
-			},
-			editable:true,
-			eventResize: function(event, delta)
-			{
-				var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
-				var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
-				var title = event.title;
-				var id = event.id;
-				$.ajax({
-					url:"/full-calender/action",
-					type:"POST",
-					data:{
-						title: title,
-						start: start,
-						end: end,
-						id: id,
-						type: 'update'
-					},
-					success:function(response)
-					{
-						calendar.fullCalendar('refetchEvents');
-						alert("Event Updated Successfully");
-					}
-				})
-			},
-			eventDrop: function(event, delta)
-			{
-				var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
-				var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
-				var title = event.title;
-				var id = event.id;
-				$.ajax({
-					url:"/full-calender/action",
-					type:"POST",
-					data:{
-						title: title,
-						start: start,
-						end: end,
-						id: id,
-						type: 'update'
-					},
-					success:function(response)
-					{
-						calendar.fullCalendar('refetchEvents');
-						alert("Event Updated Successfully");
-					}
-				})
-			},
-	
-			eventClick:function(event)
-			{
-				if(confirm("Are you sure you want to remove it?"))
-				{
-					var id = event.id;
-					$.ajax({
-						url:"/full-calender/action",
-						type:"POST",
-						data:{
-							id:id,
-							type:"delete"
-						},
-						success:function(response)
-						{
-							calendar.fullCalendar('refetchEvents');
-							alert("Event Deleted Successfully");
-						}
-					})
-				}
-			}
-		});
-	
-	});
-	  
-</script>
-	  

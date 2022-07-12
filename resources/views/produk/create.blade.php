@@ -23,17 +23,37 @@
                     @csrf
                     
                     <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <select name="kategori_id" class="form-control">
-                            @foreach ($kategori as $row)
-                                <option value="{{ $row->id }}">{{ $row->nama_kategori }}</option>
+                        <label for="supplier">Kategori</label>
+                        <select name="supplier_id" class="form-control">
+                            @foreach ($supplier as $row)
+                                <option value="{{ $row->id }}">{{ $row->bahan_baku }}</option>
                             @endforeach
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="jenis_ikan">Jenis Ikan</label>
-                        <input type="text" name="jenis_ikan" class="form-control" id="text" placeholder="Enter Jenis Ikan">
+                        <label for="nama_produk">Nama Produk</label>
+                        <input type="text" name="nama_produk" class="form-control" id="text" placeholder="Enter Nama Produk">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jenis_pakan">Jenis Pakan</label>
+                        <input type="text" name="jenis_pakan" class="form-control" id="text" placeholder="Enter Jenis Pakan">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="merk">Merk</label>
+                        <input type="text" name="merk" class="form-control" id="text" placeholder="Enter Merk">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kondisi">Kondisi</label>
+                        <input type="text" name="kondisi" class="form-control" id="text" placeholder="Enter Kondisi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="berat">Berat</label>
+                        <input type="text" name="berat" class="form-control" id="text" placeholder="Enter Berat">
                     </div>
 
                     <div class="form-group">
@@ -47,37 +67,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <input type="text" name="alamat" class="form-control" id="text" placeholder="Enter Alamat">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="notlpn">No Tlpn</label>
-                        <input type="text" name="notlpn" class="form-control" id="text" placeholder="Enter No Tlpn/Wa">
-                    </div>
-
-                    <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
                         <textarea name="deskripsi" id="editor1" class="form-control"> </textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="gambar_produk">Gambar Produk</label>
-                        <input type="file" name="gambar_produk" class="form-control">
+                        <label for="gambar_produk_supplier">Gambar Produk</label>
+                        <input type="file" name="gambar_produk_supplier" class="form-control">
                     </div>
 
-                    <div class="form-group">
-                        <label for="video_produk">Video Produk</label>
-                        <input type="file" name="video_produk" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" class="form-control">
-                            <option value="1">Tersedia</option>
-                            <option value="0">Habis</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" type="submit">Save</button>

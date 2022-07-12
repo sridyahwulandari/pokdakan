@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CountdownTimerController;
 
 
 /*
@@ -31,15 +33,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/beranda', [FrontController::class, 'beranda']);
+Route::get('/beranda-detail', [FrontController::class, 'berandaDetail']);
+Route::get('/berita-front', [FrontController::class, 'beritaFront']);
+Route::get('/berita-front-detail/{slug}', [FrontController::class, 'beritaFrontDetail'])->name('berita-front-detail');
+Route::get('/edukasi-front', [FrontController::class, 'edukasiFront']);
+Route::get('/edukasi-front-detail/{slug}', [FrontController::class, 'edukasiFrontDetail'])->name('edukasi-front-detail');
 Route::get('/tentang-kami', [FrontController::class, 'tentang']);
-Route::get('/produk-front', [FrontController::class, 'produkFront']);
-Route::get('/produk-front-detail', [FrontController::class, 'produkFrontDetail']);
-Route::get('/acara', [FrontController::class, 'acara']);
-// Route::get('/hubungi-kami', [FrontController::class, 'hubungi']);
 Route::get('/formemail', [FrontController::class, 'formemail']);
 Route::post('/kirim', [FrontController::class, 'kirim']);
-// Route::get('formemail', [KirimEmailController::class, 'index']);
-// Route::post('kirim', [KirimEmailController::class, 'kirim']);
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
@@ -50,7 +52,21 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/password/change', 'UserController@postPassword')->name('userPostPassword');
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
+    Route::resource('supplier', 'SupplierController');
+    Route::resource('budidaya', 'BudidayaController');
+    Route::resource('distributor', 'DistributorController');
+    Route::resource('berita', 'BeritaController');
+    Route::resource('edukasi', 'EdukasiController');
     Route::resource('produk', 'ProdukController');
-    Route::resource('kategori', 'KategoriController');
-    Route::resource('jenis', 'JenisController');
+    Route::get('produktersedia', 'ProdukController@produktersedia')->name('produk.produktersedia');
+    Route::resource('tambak', 'TambakController');
+    Route::resource('jadwal', 'JadwalController');
+    Route::resource('pembesaran', 'PembesaranController');
+    Route::resource('panen', 'PanenController');
+    Route::resource('kebutuhan-pengepul', 'KebutuhanPengepulController');
+    Route::resource('kebutuhan-pembudidaya', 'KebutuhanPembudidayaController');
+    
+    // Route::post('/kirim', [FrontController::class, 'kirim']);
+    Route::get('jadwal/update-pembesaran/{id}', 'JadwalController@updatePAksi');
+    Route::get('pembesaran/update-panen/{id}', 'PembesaranController@updatePanenAksi');
 });

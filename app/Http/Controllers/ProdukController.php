@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Produk;
-use App\Models\Kategori;
+use App\Models\Supplier;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,12 +17,29 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:produk-list|produk-create|produk-edit|produk-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:produk-tersedia|produk-create|produk-edit|produk-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:produk-create', ['only' => ['create', 'store']]);
+         $this->middleware('permission:produk-edit', ['only' => ['edit', 'update']]);
+         $this->middleware('permission:produk-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:produk-show', ['only' => ['show']]);
+    }
     public function index()
     {
-        $produk = Produk::all();
+        $produk = Produk::where('user_id',auth()->user()->id)->get();
         $user = auth()->user();
         return view('produk.index', compact('produk'));
     }
+
+    public function produktersedia()
+    {
+        $produk = Produk::all();
+        $user = auth()->user();
+        return view('produk.produktersedia', compact('produk'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -31,8 +48,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
-        return view('produk.create', compact('kategori'));
+        $supplier = Supplier::all();
+        return view('produk.create', compact('supplier'));
     }
 
     /**
@@ -44,20 +61,20 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'jenis_ikan' => 'required',
+            'nama_produk' => 'required',
+            'jenis_pakan' => 'required',
+            'merk' => 'required',
+            'kondisi' => 'required',
+            'berat' => 'required',
             'harga' => 'required',
             'stok' => 'required',
-            'alamat' => 'required',
-            'notlpn' => 'required',
             'deskripsi' => 'required',
-            'gambar_produk' => 'mimes:png,jpg,jpeg',
-            'video_produk' => 'mimes:mp4',
+            'gambar_produk_supplier' => 'mimes:png,jpg,jpeg',
         ]);
         $data = $request->all();
         $data['user_id'] = Auth::id();
-        $data['slug'] = Str::slug($request->jenis_ikan);
-        $data['gambar_produk'] = $request->file('gambar_produk')->store('produk');
-        $data['video_produk'] = $request->file('video_produk')->store('produk');
+        $data['slug'] = Str::slug($request->nama_produk);
+        $data['gambar_produk_supplier'] = $request->file('gambar_produk_supplier')->store('produk');
         
 
         Produk::create($data);
@@ -73,7 +90,15 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        //
+        $produk = Produk::find($id);
+        $supplier = Supplier::all();
+        $user = User::all();
+
+        return view('produk.show', [
+            'produk' => $produk,
+            'supplier' => $supplier,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -85,12 +110,13 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produk = Produk::find($id);
-        $kategori = Kategori::all();
+        $supplier = Supplier::all();
         $user = User::all();
 
         return view('produk.edit', [
             'produk' => $produk,
-            'kategori' => $kategori,
+            'supplier' => $supplier,
+            'user' => $user,
         ]);
     }
 
@@ -103,39 +129,39 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(empty($request->file('gambar_produk', 'video_produk'))){
+        if(empty($request->file('gambar_produk_supplier_supplier'))){
             $produk = Produk::find($id);
             $produk->update([
                 'user_id' => Auth::id(),
-                'kategori_id' => $request->kategori_id,
-                'jenis_ikan' => $request->jenis_ikan,
-                'slug' => Str::slug($request->jenis_ikan),
+                'supplier_id' => $request->supplier_id,
+                'nama_produk' => $request->nama_produk,
+                'slug' => Str::slug($request->nama_produk),
+                'jenis_pakan' => $request->jenis_pakan,
+                'merk' => $request->merk,
+                'kondisi' => $request->kondisi,
+                'berat' => $request->berat,
                 'harga' => $request->harga,
                 'stok' => $request->stok,
-                'alamat' => $request->alamat,
-                'notlpn' => $request->notlpn,
                 'deskripsi' => $request->deskripsi,
-                'status' => $request->status,
             ]);
             return redirect()->route('produk.index')->with(['success' => 'Data Berhasil Diedit']);
             
         }else {
             $produk = Produk::find($id);
-            Storage::delete($produk->gambar_produk);
-            Storage::delete($produk->video_produk);
+            Storage::delete($produk->gambar_produk_supplier);
             $produk->update([
                 'user_id' => Auth::id(),
-                'kategori_id' => $request->kategori_id,
-                'jenis_ikan' => $request->jenis_ikan,
-                'slug' => Str::slug($request->jenis_ikan),
+                'supplier_id' => $request->supplier_id,
+                'nama_produk' => $request->nama_produk,
+                'slug' => Str::slug($request->nama_produk),
+                'jenis_pakan' => $request->jenis_pakan,
+                'merk' => $request->merk,
+                'kondisi' => $request->kondisi,
+                'berat' => $request->berat,
                 'harga' => $request->harga,
                 'stok' => $request->stok,
-                'alamat' => $request->alamat,
-                'notlpn' => $request->notlpn,
                 'deskripsi' => $request->deskripsi,
-                'status' => $request->status,
-                'gambar_produk' => $request->file('gambar_produk')->store('produk'),
-                'video_produk' => $request->file('video_produk')->store('produk'),
+                'gambar_produk_supplier' => $request->file('gambar_produk_supplier')->store('produk'),
             ]);
             return redirect()->route('produk.index')->with(['success' => 'Data Berhasil Diedit']);
 
@@ -152,8 +178,7 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($id);
 
-        Storage::delete($produk->gambar_produk);
-        Storage::delete($produk->video_produk);
+        Storage::delete($produk->gambar_produk_supplier);
         
         $produk->delete();
 

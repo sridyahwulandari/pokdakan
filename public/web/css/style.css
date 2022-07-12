@@ -528,6 +528,30 @@ section {
 .values .box:hover img {
   transform: scale(1);
 }
+.values .btn-get-started {
+  margin-top: 30px;
+  line-height: 0;
+  padding: 15px 40px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #fff;
+  background: #4154f1;
+  box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
+}
+.values .btn-get-started span {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.values .btn-get-started i {
+  margin-left: 5px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.values .btn-get-started:hover i {
+  transform: translateX(5px);
+}
 
 /*--------------------------------------------------------------
 # Counts
@@ -1118,11 +1142,11 @@ section {
 --------------------------------------------------------------*/
 .testimonials .testimonial-item {
   box-sizing: content-box;
-  padding: 30px;
-  margin: 40px 30px;
+  padding: 10px;
+  margin: 20px 10px;
   box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
   background: #fff;
-  min-height: 320px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -1136,8 +1160,8 @@ section {
   margin: 0 1px;
 }
 .testimonials .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50%;
+  width: 250px;
+  border-radius: 10%;
   border: 4px solid #fff;
   margin: 0 auto;
 }
@@ -2040,4 +2064,32 @@ section {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+body
+{
+    font-family:sans-serif;
+}
+ 
+table
+{
+    border-collapse: collapse;
+    width: 35%;
+}
+ 
+table, th, td
+{
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+ 
+th
+{
+    background-color: dodgerblue;
+    color: white;
+}
+ 
+tr:nth-child(odd)
+{
+    background-color: Lavender;
 }

@@ -10,7 +10,6 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									{{ auth()->user()->name }}
-									<span class="user-level">Administrator</span>
 									<span class="caret"></span>
 								</span>
 							</a>
@@ -48,7 +47,7 @@
 					</div>
 					<ul class="nav nav-primary">
 						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+							<a  href="{{ route('home')}}">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
@@ -68,12 +67,6 @@
 							</a>
 							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
-									<li>
-										<a href="">
-											<i class="fas fa-user"></i>
-											<p>Admin</p>
-										</a>
-									</li>
 									@can('user-list')
 									<li>
 										<a href="{{ route('users.index') }}">
@@ -101,29 +94,35 @@
 								</ul>
 							</div>
 						</li>
-						@endcan
-						@can('kategori-list')
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-pen-square"></i>
 								<p>Master Data</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="sidebarLayouts">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
-									@can('kategori-list')
+									@can('supplier-list')
 									<li>
-										<a href="{{ route('kategori.index') }}">
-											<i class="fas fa-fish"></i>
-											<p>Kategori Ikan</p>
+										<a href="{{ route('supplier.index') }}">
+											<i class="fas fa-desktop"></i>
+											<p>Supplier</p>
 										</a>
 									</li>
 									@endcan
-									@can('jenis-list')
+									@can('budidaya-list')
 									<li>
-										<a href="{{ route('jenis.index') }}">
-											<i class="fas fa-fish"></i>
-											<p>Jenis Ikan</p>
+										<a href="{{ route('budidaya.index') }}">
+											<i class="fas fa-desktop"></i>
+											<p>Budidaya</p>
+										</a>
+									</li>
+									@endcan
+									@can('distributor-list')
+									<li>
+										<a href="{{ route('distributor.index') }}">
+											<i class="fas fa-desktop"></i>
+											<p>Pengepul</p>
 										</a>
 									</li>
 									@endcan
@@ -131,26 +130,128 @@
 							</div>
 						</li>
 						@endcan
-						@can('produk-list')
+						@can('berita-list')
 						<li class="nav-item">
-							<a href="{{ route('produk.index') }}">
-								<i class="fas fa-box"></i>
-								<p>Produk</p>
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-newspaper"></i>
+								<p>Konten</p>
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									@can('berita-list')
+									<li>
+										<a href="{{ route('berita.index') }}">
+											<i class="far fa-newspaper"></i>
+											<p>Kelola Berita & Edukasi</p>
+										</a>
+									</li>
+									@endcan
+								</ul>
+							</div>
 						</li>
 						@endcan
+						@can('produk')
 						<li class="nav-item">
-							<a href="">
-								<i class="fas fa-calendar-alt"></i>
-								<p>Acara</p>
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-table"></i>
+								<p>Supplier</p>
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									@can('produk-supplier')
+									<li>
+										<a href="{{ route('produk.index') }}">
+											<span class="sub-item">Produk Supplier</span>
+										</a>
+									</li>
+									@endcan
+									@can('produk-tersedia')
+									<li>
+										<a href="{{ route('produk.produktersedia') }}">
+											<span class="sub-item">Produk Tersedia</span>
+										</a>
+									</li>
+									@endcan
+				
+									
+								</ul>
+							</div>
 						</li>
+						@endcan
+						@can('pembudidaya-list')
 						<li class="nav-item">
-							<a href="widgets.html">
+							<a data-toggle="collapse" href="#submenu">
 								<i class="fas fa-fish"></i>
-								<p>Trend Pasar</p>
+								<p>Pembudidaya</p>
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="submenu">
+								<ul class="nav nav-collapse">
+									@can('tambak-list')
+									<li>
+										<a href="{{ route('tambak.index') }}">
+											<span class="sub-item">Data Tambak</span>
+										</a>
+									</li>
+									@endcan
+									<li>
+										<a data-toggle="collapse" href="#subnav1">
+											<span class="sub-item">Data Jadwal</span>
+											<span class="caret"></span>
+										</a>
+										<div class="collapse" id="subnav1">
+											<ul class="nav nav-collapse subnav">
+												<li>
+													<a href="{{ route('jadwal.index') }}">
+														<span class="sub-item">Tebar Benih</span>
+													</a>
+												</li>
+												<li>
+													<a href="{{ route('pembesaran.index') }}">
+														<span class="sub-item">Pembesaran Ikan</span>
+													</a>
+												</li>
+												<li>
+													<a href="{{ route('panen.index') }}">
+														<span class="sub-item">Panen</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									@can('kebutuhan-pembudidaya-list')
+									<li>
+										<a href="{{ route('kebutuhan-pembudidaya.index') }}">
+											<span class="sub-item">Kebutuhan Budidaya</span>
+										</a>
+									</li>
+									@endcan
+								</ul>
+							</div>
 						</li>
+						@endcan
+						@can('kebutuhan-pengepul-list')
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#charts">
+								<i class="fas fa-user"></i>
+								<p>Pengepul</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="charts">
+								<ul class="nav nav-collapse">
+									@can('kebutuhan-pengepul-list')
+									<li>
+										<a href="{{ route('kebutuhan-pengepul.index') }}">
+											<span class="sub-item">Kebutuhan Pengepul</span>
+										</a>
+									</li>
+									@endcan
+								</ul>
+							</div>
+						</li>
+						@endcan
 					</ul>
 				</div>
 			</div>

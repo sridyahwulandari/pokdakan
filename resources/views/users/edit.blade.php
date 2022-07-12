@@ -41,6 +41,10 @@
                         <strong>Role:</strong>
                         {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control','multiple')) !!}
                     </div>
+                    <div class="form-group">
+                        <strong>Foto:</strong>
+                        {!! Form::file('foto', null, array('placeholder' => 'Foto','class' => 'form-control')) !!}
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 {!! Form::close() !!}
             </div>

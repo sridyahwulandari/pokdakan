@@ -32,6 +32,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
+                                <th>Foto</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,6 +50,7 @@
                                         @endforeach
                                     @endif
                                 </td>
+                                <td><img src="img/avatar.jpg" width="70" class="img img-rounded-circle"></td>
                                 <td>
                                     <div class="form-button-action">
                                         <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Show User">

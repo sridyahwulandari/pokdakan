@@ -20,7 +20,7 @@
             </div>
 
             <div class="card-body">
-                {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+                {!! Form::open(array('route' => 'users.store','method'=>'POST','enctype' => 'multipart/form-data')) !!}
                     <div class="form-group">
                         <strong>Name:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
@@ -40,6 +40,10 @@
                     <div class="form-group">
                         <strong>Role:</strong>
                         {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Foto:</strong>
+                        {!! Form::file('foto', null, array('placeholder' => 'Foto','class' => 'form-control')) !!}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 {!! Form::close() !!}

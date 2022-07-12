@@ -27,18 +27,6 @@ class PermissionTableSeeder extends Seeder
             'permission-create',
             'permission-edit',
             'permission-delete',
-            'post-list',
-            'post-create',
-            'post-edit',
-            'post-delete',
-            'kategori-list',
-            'kategori-create',
-            'kategori-edit',
-            'kategori-delete',
-            'jenis-list',
-            'jenis-create',
-            'jenis-edit',
-            'jenis-delete',
         ];
 
         foreach ($data as $permission) {

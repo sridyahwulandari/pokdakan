@@ -170,6 +170,7 @@ class UserController extends Controller
             'alamat' => 'required',
             'telepon' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
+            'foto' => 'mimes:png,jpg,jpeg',
             
         ]);
 

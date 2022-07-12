@@ -23,7 +23,8 @@
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Tentang Kami</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Produk</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Event</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Trend Pasar</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Hubungi Kami</a></li>
             </ul>
           </div>

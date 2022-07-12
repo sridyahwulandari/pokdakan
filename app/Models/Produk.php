@@ -9,17 +9,17 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $table = 'produk';
+    protected $table = 'produks';
 
     protected $fillable = [
-        'user_id', 'kategori_id', 'jenis_ikan', 'slug', 'harga','stok','alamat','notlpn', 'deskripsi', 'gambar_produk', 'video_produk', 'status'
+         'user_id', 'supplier_id', 'nama_produk', 'slug', 'jenis_pakan', 'merk', 'kondisi', 'berat', 'harga', 'stok', 'deskripsi', 'gambar_produk_supplier'
     ];
 
     protected $hidden = [];
 
-    public function kategori()
+    public function supplier()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
     }
 
     public function users()
