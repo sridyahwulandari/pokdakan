@@ -41,6 +41,32 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function regis()
+    {
+        $roles = Role::pluck('name','name')->all();
+
+        return view('users.regis', compact('roles'));
+    }
+    public function store_regis(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
+            'roles' => 'required',
+            'foto' => 'mimes:png,jpg,jpeg',
+        ]);
+    
+        $input = $request->all();
+        $input['password'] = FacadesHash::make($input['password']);
+        $input['foto'] = $request->file('foto')->store('foto');
+    
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+    
+        return redirect()->route('user.regis')
+            ->with('success', 'User created successfully.');
+    }
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
@@ -60,11 +86,15 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed',
-            'roles' => 'required'
+            'roles' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'foto' => 'mimes:png,jpg,jpeg',
         ]);
     
         $input = $request->all();
         $input['password'] = FacadesHash::make($input['password']);
+        $input['foto'] = $request->file('foto')->store('foto');
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -114,16 +144,27 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'confirmed',
-            'roles' => 'required'
+            'roles' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'foto' => 'mimes:png,jpg,jpeg',
+            
         ]);
     
         $input = $request->all();
+        $input['foto'] = $request->file('foto')->store('foto');
         
         if(!empty($input['password'])) { 
             $input['password'] = FacadesHash::make($input['password']);
         } else {
             $input = Arr::except($input, array('password'));    
         }
+
+        // if(!empty($request->file('foto'))) { 
+        //     $input['foto'] = $request->file('foto')->store('foto');
+        // } else {
+        //     $input['foto'] = $request->file('foto')->store('foto');
+        // }
     
         $user = User::find($id);
         $user->update($input);
@@ -135,7 +176,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
-            ->with('success', 'User updated successfully.');
+            ->with('success', 'User berhasil diubah.');
     }
 
     /**
@@ -175,6 +216,7 @@ class UserController extends Controller
         ]);
 
         $user->update($request->all());
+        
 
         return redirect()->back()->with('success','Profile Berhasil Diubah');
     }

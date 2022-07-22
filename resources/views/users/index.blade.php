@@ -19,12 +19,8 @@
 					</div>
 				</div>
 				<div class="card-body">
-                    @if (\Session::has('success'))
-                    <div class="alert alert-success">
-                        <p>{{ \Session::get('success') }}</p>
-                    </div>
-                     @endif
-					<div class="table-responsive">
+                    
+				<div class="table-responsive">
 					<table class="table table-bordered">
                         <thead>
                             <tr>
@@ -50,7 +46,7 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td><img src="img/avatar.jpg" width="70" class="img img-rounded-circle"></td>
+                                <td><img src=" {{ asset('uploads/' . $user->foto) }} " width="100"></td>
                                 <td>
                                     <div class="form-button-action">
                                         <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Show User">

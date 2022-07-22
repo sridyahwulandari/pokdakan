@@ -21,6 +21,12 @@
 					<div class="brand">
 						<img src="{{ asset('img/logo.jpg')}}" alt="logo">
 					</div>
+					@if(Session::has('success'))
+
+                        <div class="alert alert-primary">
+                            {{ Session('success') }}
+                        </div>
+                    @endif
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
@@ -80,7 +86,7 @@
                                 </div>
 								<div class="mt-4 text-center">
                                     
-									Don't have an account? <a href="{{route('register')}}">Create One</a>
+									Don't have an account? <a href="{{ route('user.regis') }}">Daftar</a>
 								</div>
 							</form>
 						</div>

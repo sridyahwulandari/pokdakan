@@ -4,7 +4,7 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="{{ asset('img/avatar.jpg') }}" alt="..." class="avatar-img rounded-circle">
+							<img src="{{ asset('uploads/' . auth()->user()->foto) }}" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">

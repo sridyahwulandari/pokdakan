@@ -20,7 +20,7 @@
             </div>
 
             <div class="card-body">
-                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method'=>'PATCH']) !!}
+                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method'=>'PATCH', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
                         <strong>Name:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
@@ -28,6 +28,14 @@
                     <div class="form-group">
                         <strong>Email:</strong>
                         {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>Alamat:</strong>
+                        {!! Form::text('alamat', null, array('placeholder' => 'Alamat','class' => 'form-control')) !!}
+                    </div>
+                    <div class="form-group">
+                        <strong>No Telepon:</strong>
+                        {!! Form::text('telepon', null, array('placeholder' => 'No Telepon','class' => 'form-control')) !!}
                     </div>
                     <div class="form-group">
                         <strong>Password:</strong>
@@ -42,8 +50,8 @@
                         {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control','multiple')) !!}
                     </div>
                     <div class="form-group">
-                        <strong>Foto:</strong>
-                        {!! Form::file('foto', null, array('placeholder' => 'Foto','class' => 'form-control')) !!}
+                        <label for="foto">Foto</label>
+                        <input type="file" name="foto" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 {!! Form::close() !!}

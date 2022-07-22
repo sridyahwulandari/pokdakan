@@ -42,6 +42,8 @@ Route::get('/tentang-kami', [FrontController::class, 'tentang']);
 Route::get('/formemail', [FrontController::class, 'formemail']);
 Route::post('/kirim', [FrontController::class, 'kirim']);
 
+Route::get('regis', 'UserController@regis')->name('user.regis');
+Route::post('store_reg', 'UserController@store_regis')->name('user.store_regis');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
