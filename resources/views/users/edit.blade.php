@@ -42,18 +42,18 @@
                         {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
                     </div>
                     <div class="form-group">
-                        <strong>Confirm Password:</strong>
+                        <strong>Konfirmasi Password:</strong>
                         {!! Form::password('password_confirmation', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
                     </div>
                     <div class="form-group">
-                        <strong>Role:</strong>
+                        <strong>Sebagai:</strong>
                         {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control','multiple')) !!}
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto</label>
                         <input type="file" name="foto" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 {!! Form::close() !!}
             </div>
         </div>

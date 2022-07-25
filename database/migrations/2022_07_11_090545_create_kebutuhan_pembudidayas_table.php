@@ -14,9 +14,9 @@ class CreateKebutuhanPembudidayasTable extends Migration
     public function up()
     {
         Schema::create('kebutuhan_pembudidayas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('supplier_id');
-            $table->integer('budidaya_id');
+            $table->integer('pembudidaya_id');
             $table->integer('user_id');
             $table->date('tgl_kebutuhan');
             $table->string('nama');

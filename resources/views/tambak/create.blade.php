@@ -21,12 +21,6 @@
 				<div class="card-body">
                 <form method="post" action="{{ route('tambak.store') }}" enctype="multipart/form-data">
                     @csrf
-                    
-                    
-                    <div class="form-group">
-                        <label for="kode_tambak">Kode Tambak</label>
-                        <input type="text" name="kode_tambak" class="form-control" id="text" placeholder="Enter Kode Tambak">
-                    </div>
 
                     <div class="form-group">
                         <label for="nama_tambak">Nama Tambak</label>

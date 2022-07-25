@@ -14,12 +14,27 @@ class JadwalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:jadwal-list|jadwal-create|jadwal-edit|jadwal-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:jadwal-tersedia|jadwal-create|jadwal-edit|jadwal-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:jadwal-create', ['only' => ['create', 'store']]);
+         $this->middleware('permission:jadwal-edit', ['only' => ['edit', 'update']]);
+         $this->middleware('permission:jadwal-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $user = auth()->user();
-        $jadwal = Jadwal::where('aksi','tebar_bibit')->get();
-        $jadwal = Jadwal::where('user_id',auth()->user()->id)->get();
+        $jadwal = Jadwal::where('aksi','tebar_bibit')->where('user_id',auth()->user()->id)->get();
+        // $jadwal = Jadwal::where()->get();
         return view('jadwal.index', compact('jadwal'));
+    }
+
+    public function hasilpanen()
+    {
+        $jadwal = Jadwal::all();
+        $user = auth()->user();
+        return view('jadwal.hasilpanen', compact('jadwal'));
     }
 
 
@@ -30,7 +45,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        $tambak = Tambak::all();
+        // $tambak = Tambak::all();
+        $tambak = Tambak::where('user_id',auth()->user()->id)->get();
         return view('jadwal.create', compact('tambak'));
     }
 
@@ -49,6 +65,7 @@ class JadwalController extends Controller
             'jumlah_pakan' => 'required',
             'jenis_pakan' => 'required',
             'usia_tambak' => 'required',
+            'tgl_panen' => 'required',
             'aksi' => 'required',
         ]);
         $data = $request->all();
@@ -84,7 +101,7 @@ class JadwalController extends Controller
         //
     }
 
-    public function updatePAksi($id)
+    public function updatePaksi($id)
     {
         $jadwal = Jadwal::find($id);
 
@@ -92,6 +109,30 @@ class JadwalController extends Controller
         // dd($jadwal);
         $jadwal->update();
         return redirect('pembesaran')->with(['success' => 'Data Berhasil Disimpan']);
+
+
+    }
+
+    public function updatePanenAksi($id)
+    {
+        $jadwal = Jadwal::find($id);
+
+        $jadwal->aksi = 'panen' ;
+        // dd($jadwal);
+        $jadwal->update();
+        return redirect('panen')->with(['success' => 'Data Berhasil Disimpan']);
+
+
+    }
+
+    public function updatePembesaranAksi($id)
+    {
+        $jadwal = Jadwal::find($id);
+
+        $jadwal->aksi = 'panen' ;
+        // dd($jadwal);
+        $jadwal->update();
+        return redirect('panen')->with(['success' => 'Data Berhasil Disimpan']);
 
 
     }

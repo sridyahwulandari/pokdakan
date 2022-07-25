@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBudidayasTable extends Migration
+class CreatePengepulsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateBudidayasTable extends Migration
      */
     public function up()
     {
-        Schema::create('budidayas', function (Blueprint $table) {
+        Schema::create('pengepuls', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori_budidaya');
-            $table->string('slug');
+            $table->string('kategori_pengepul');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateBudidayasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('budidayas');
+        Schema::dropIfExists('pengepuls');
     }
 }

@@ -32,10 +32,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="budidaya">Kategori Budidaya</label>
-                        <select name="budidaya_id" class="form-control">
-                            @foreach ($budidaya as $row)
-                                <option value="{{ $row->id }}">{{ $row->kategori_budidaya }}</option>
+                        <label for="pembudidaya">Kategori Budidaya</label>
+                        <select name="pembudidaya_id" class="form-control">
+                            @foreach ($pembudidaya as $row)
+                                <option value="{{ $row->id }}">{{ $row->kategori_pembudidaya }}</option>
                             @endforeach
                         </select>
                     </div>

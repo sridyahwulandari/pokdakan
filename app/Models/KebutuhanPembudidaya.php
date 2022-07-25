@@ -12,7 +12,7 @@ class KebutuhanPembudidaya extends Model
     protected $table = 'kebutuhan_pembudidayas';
 
     protected $fillable = [
-        'supplier_id', 'budidaya_id', 'user_id', 'tgl_kebutuhan', 'nama', 'jenis', 'jumlah'];
+        'supplier_id', 'pembudidaya_id', 'user_id', 'tgl_kebutuhan', 'nama', 'jenis', 'jumlah'];
 
     protected $hidden = [];
 
@@ -21,9 +21,9 @@ class KebutuhanPembudidaya extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function budidaya()
+    public function pembudidaya()
     {
-        return $this->belongsTo(Budidaya::class, 'budidaya_id', 'id');
+        return $this->belongsTo(Pembudidaya::class, 'pembudidaya_id', 'id');
     }
 
     public function supplier()

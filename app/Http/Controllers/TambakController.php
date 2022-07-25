@@ -55,7 +55,6 @@ class TambakController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'kode_tambak' => 'required',
             'nama_tambak' => 'required',
             'luas_tambak' => 'required',
             'kedalaman' => 'required',
@@ -113,7 +112,6 @@ class TambakController extends Controller
             $tambak = Tambak::find($id);
             $tambak->update([
                 'user_id' => Auth::id(),
-                'kode_tambak' => $request->kode_tambak,
                 'nama_tambak' => $request->nama_tambak,
                 'luas_tambak' => $request->luas_tambak,
                 'kedalaman' => $request->kedalaman,
@@ -127,7 +125,6 @@ class TambakController extends Controller
             Storage::delete($tambak->gambar_tambak);
             $tambak->update([
                 'user_id' => Auth::id(),
-                'kode_tambak' => $request->kode_tambak,
                 'nama_tambak' => $request->nama_tambak,
                 'luas_tambak' => $request->luas_tambak,
                 'kedalaman' => $request->kedalaman,

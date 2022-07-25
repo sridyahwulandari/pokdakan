@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supplier;
+use App\Models\Pengepul;
 use Illuminate\Http\Request;
 
-class SupplierController extends Controller
+class PengepulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,17 @@ class SupplierController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:supplier-list|supplier-create|supplier-edit|supplier-delete', ['only' => ['index', 'show']]);
-         $this->middleware('permission:supplier-create', ['only' => ['create', 'store']]);
-         $this->middleware('permission:supplier-edit', ['only' => ['edit', 'update']]);
-         $this->middleware('permission:supplier-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:pengepul-list|pengepul-create|pengepul-edit|pengepul-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:pengepul-create', ['only' => ['create', 'store']]);
+         $this->middleware('permission:pengepul-edit', ['only' => ['edit', 'update']]);
+         $this->middleware('permission:pengepul-delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
-        $data = Supplier::latest()->paginate(5);
-        $supplier = Supplier::all();
-        return view('supplier.index', compact('supplier'));
+        $data = Pengepul::latest()->paginate(5);
+        $pengepul = Pengepul::all();
+        return view('pengepul.index', compact('pengepul'));
     }
 
     /**
@@ -34,7 +34,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('supplier.create');
+        return view('pengepul.create');
     }
 
     /**
@@ -46,13 +46,13 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'bahan_baku' => 'required|min:4',
+            'kategori_pengepul' => 'required|min:4',
         ]);
-        $supplier = Supplier::create([
-            'bahan_baku' => $request->bahan_baku,
+        $pengepul = Pengepul::create([
+            'kategori_pengepul' => $request->kategori_pengepul,
         ]);
 
-        return redirect()->route('supplier.index')->with(['success' => 'Data Berhasil Disimpan']);
+        return redirect()->route('pengepul.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**
@@ -74,9 +74,9 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $supplier = Supplier::find($id);
+        $pengepul = Pengepul::find($id);
 
-        return view('supplier.edit', compact('supplier'));
+        return view('pengepul.edit', compact('pengepul'));
     }
 
     /**
@@ -90,10 +90,10 @@ class SupplierController extends Controller
     {
         $data = $request->all();
 
-        $supplier = Supplier::findOrFail($id);
-        $supplier->update($data);
+        $pengepul = Pengepul::findOrFail($id);
+        $pengepul->update($data);
 
-        return redirect()->route('supplier.index')->with(['success' => 'Data Berhasil Diubah']);
+        return redirect()->route('pengepul.index')->with(['success' => 'Data Berhasil Diubah']);
     }
 
     /**
@@ -104,10 +104,10 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        $supplier = Supplier::find($id);
+        $pengepul = Pengepul::find($id);
 
-        $supplier->delete();
+        $pengepul->delete();
 
-        return redirect()->route('supplier.index')->with(['success' => 'Data Berhasil Dihapus']);
+        return redirect()->route('pengepul.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
 }

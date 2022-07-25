@@ -65,7 +65,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('user.regis')
-            ->with('success', 'User created successfully.');
+            ->with('success', 'Akun Anda Berhasil Terdaftar, Silahkan Masuk!.');
     }
     public function create()
     {

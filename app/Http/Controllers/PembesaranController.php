@@ -15,20 +15,20 @@ class PembesaranController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::where('aksi','pembesaran_ikan')->get();
-        $jadwal = Jadwal::where('user_id',auth()->user()->id)->get();
-        // dd($jadwal);
+        $user = auth()->user();
+        $jadwal = Jadwal::where('aksi','pembesaran')->where('user_id',auth()->user()->id)->get();
+        // $jadwal = Jadwal::where()->get();
         return view('pembesaran.index', compact('jadwal'));
     }
 
-    public function updatePanenAksi($id)
+    public function updatePembesaranAksi($id)
     {
         $jadwal = Jadwal::find($id);
 
-        $jadwal->aksi = 'panen' ;
+        $jadwal->aksi = 'pembesaran' ;
         // dd($jadwal);
         $jadwal->update();
-        return redirect('panen')->with(['success' => 'Data Berhasil Disimpan']);
+        return redirect('pembesaran')->with(['success' => 'Data Berhasil Disimpan']);
 
 
     }

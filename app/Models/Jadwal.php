@@ -12,7 +12,7 @@ class Jadwal extends Model
     protected $table = 'jadwals';
 
     protected $fillable = [
-         'user_id','tambak_id', 'tgl_bibit', 'tgl_pakan', 'jumlah_bibit', 'jumlah_pakan', 'jenis_pakan', 'usia_tambak', 'aksi'
+         'user_id','tambak_id', 'tgl_bibit', 'tgl_pakan', 'tgl_panen', 'jumlah_bibit', 'jumlah_pakan', 'jenis_pakan', 'usia_tambak', 'aksi'
     ];
 
     protected $hidden = [];

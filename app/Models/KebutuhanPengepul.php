@@ -12,7 +12,7 @@ class KebutuhanPengepul extends Model
     protected $table = 'kebutuhan_pengepuls';
 
     protected $fillable = [
-        'distributor_id', 'budidaya_id', 'user_id', 'tgl_kebutuhan', 'nama', 'jenis', 'jumlah'];
+        'pengepul_id', 'pembudidaya_id', 'user_id', 'tgl_kebutuhan', 'nama', 'jenis', 'jumlah'];
 
     protected $hidden = [];
 
@@ -21,13 +21,13 @@ class KebutuhanPengepul extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function budidaya()
+    public function pembudidaya()
     {
-        return $this->belongsTo(Budidaya::class, 'budidaya_id', 'id');
+        return $this->belongsTo(Pembudidaya::class, 'pembudidaya_id', 'id');
     }
 
-    public function distributor()
+    public function pengepul()
     {
-        return $this->belongsTo(Distributor::class, 'distributor_id', 'id');
+        return $this->belongsTo(Pengepul::class, 'pengepul_id', 'id');
     }
 }

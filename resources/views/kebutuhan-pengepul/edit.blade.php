@@ -24,15 +24,15 @@
                     @method('PUT')
 
                     <div class="form-group">
-                        <label for="budidaya">Kategori Budidaya</label>
+                        <label for="pengepul">Pengepul</label>
 
-                        <select name="budidaya_id" class="form-control">
-                            @foreach ($budidaya as $row)
-                            @if ($row->id == $kebutuhanpengepul->budidaya_id)
-                            <option value={{ $row->id }} selected='selected'> {{ $row->kategori_budidaya }}</option>
+                        <select name="pengepul_id" class="form-control">
+                            @foreach ($pengepul as $row)
+                            @if ($row->id == $kebutuhanpengepul->pengepul_id)
+                            <option value={{ $row->id }} selected='selected'> {{ $row->kategori_pengepul }}</option>
                             @else
                             <option value="{{ $row->id }}">
-                                {{ $row->kategori_budidaya }}</option>
+                                {{ $row->kategori_pengepul }}</option>
                                 
                             @endif
                             @endforeach
@@ -40,15 +40,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="distributor">Supplier</label>
+                        <label for="pembudidaya">Kategori Budidaya</label>
 
-                        <select name="distributor_id" class="form-control">
-                            @foreach ($distributor as $row)
-                            @if ($row->id == $kebutuhanpengepul->distributor_id)
-                            <option value={{ $row->id }} selected='selected'> {{ $row->pengepul }}</option>
+                        <select name="pembudidaya_id" class="form-control">
+                            @foreach ($pembudidaya as $row)
+                            @if ($row->id == $kebutuhanpengepul->pembudidaya_id)
+                            <option value={{ $row->id }} selected='selected'> {{ $row->kategori_pembudidaya }}</option>
                             @else
                             <option value="{{ $row->id }}">
-                                {{ $row->pengepul }}</option>
+                                {{ $row->kategori_pembudidaya }}</option>
                                 
                             @endif
                             @endforeach

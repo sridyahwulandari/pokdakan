@@ -110,17 +110,17 @@
 										</a>
 									</li>
 									@endcan
-									@can('budidaya-list')
+									@can('pembudidaya-list')
 									<li>
-										<a href="{{ route('budidaya.index') }}">
+										<a href="{{ route('pembudidaya.index') }}">
 											<i class="fas fa-desktop"></i>
-											<p>Budidaya</p>
+											<p>Pembudidaya</p>
 										</a>
 									</li>
 									@endcan
-									@can('distributor-list')
+									@can('pengepul-list')
 									<li>
-										<a href="{{ route('distributor.index') }}">
+										<a href="{{ route('pengepul.index') }}">
 											<i class="fas fa-desktop"></i>
 											<p>Pengepul</p>
 										</a>
@@ -174,13 +174,11 @@
 										</a>
 									</li>
 									@endcan
-				
-									
 								</ul>
 							</div>
 						</li>
 						@endcan
-						@can('pembudidaya-list')
+						@can('budidaya-list')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#submenu">
 								<i class="fas fa-fish"></i>
@@ -196,6 +194,7 @@
 										</a>
 									</li>
 									@endcan
+									@can('jadwal-list')
 									<li>
 										<a data-toggle="collapse" href="#subnav1">
 											<span class="sub-item">Data Jadwal</span>
@@ -221,6 +220,7 @@
 											</ul>
 										</div>
 									</li>
+									@endcan
 									@can('kebutuhan-pembudidaya-list')
 									<li>
 										<a href="{{ route('kebutuhan-pembudidaya.index') }}">

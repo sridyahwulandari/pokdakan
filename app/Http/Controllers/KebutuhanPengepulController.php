@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budidaya;
-use App\Models\Distributor;
+use App\Models\Pembudidaya;
+use App\Models\Pengepul;
 use App\Models\KebutuhanPengepul;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,11 +38,11 @@ class KebutuhanPengepulController extends Controller
      */
     public function create()
     {
-        $distributor = Distributor::all();
-        $budidaya = Budidaya::all();
+        $pengepul = Pengepul::all();
+        $pembudidaya = Pembudidaya::all();
         return view('kebutuhan-pengepul.create',[
-            'distributor' => $distributor,
-            'budidaya' => $budidaya,
+            'pengepul' => $pengepul,
+            'pembudidaya' => $pembudidaya,
         ]);
     }
 
@@ -77,14 +77,14 @@ class KebutuhanPengepulController extends Controller
     public function show($id)
     {
         $kebutuhanpengepul = KebutuhanPengepul::find($id);
-        $distributor = Distributor::all();
-        $budidaya = Budidaya::all();
+        $pengepul = Pengepul::all();
+        $pembudidaya = Pembudidaya::all();
         $user = User::all();
 
         return view('kebutuhan-pengepul.show', [
             'kebutuhanpengepul' => $kebutuhanpengepul,
-            'distributor' => $distributor,
-            'budidaya' => $budidaya,
+            'pengepul' => $pengepul,
+            'pembudidaya' => $pembudidaya,
             'user' => $user,
         ]);
     }
@@ -98,14 +98,14 @@ class KebutuhanPengepulController extends Controller
     public function edit($id)
     {
         $kebutuhanpengepul = KebutuhanPengepul::find($id);
-        $distributor = Distributor::all();
-        $budidaya = Budidaya::all();
+        $pengepul = Pengepul::all();
+        $pembudidaya = Pembudidaya::all();
         $user = User::all();
 
         return view('kebutuhan-pengepul.edit', [
             'kebutuhanpengepul' => $kebutuhanpengepul,
-            'distributor' => $distributor,
-            'budidaya' => $budidaya,
+            'pengepul' => $pengepul,
+            'pembudidaya' => $pembudidaya,
             'user' => $user,
         ]);
     }

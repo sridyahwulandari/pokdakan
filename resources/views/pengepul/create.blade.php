@@ -14,17 +14,16 @@
 			<div class="card full-height">
 				<div class="card-header">
 					<div class="card-head-row">
-						<div class="card-title">Edit Kategori Budidaya <i>{{ $budidaya->kategori_budidaya }}</i></div>
-                        <a href="{{ route('budidaya.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
+						<div class="card-title">Form Pengepul</div>
+                        <a href="{{ route('pengepul.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
 					</div>
 				</div>
 				<div class="card-body">
-                <form method="post" action="{{ route('budidaya.update', $budidaya->id) }}">
+                <form method="post" action="{{ route('pengepul.store') }}">
                     @csrf
-                    @method('PUT')
                     <div class="form-group">
-                        <label for="budidaya">Nama Kategori Budidaya</label>
-                        <input type="text" name="kategori_budidaya" value="{{ $budidaya->kategori_budidaya }}" class="form-control" id="email2" placeholder="Enter Kategori Budidaya">
+                        <label for="kategori_pengepul">Kategori Pengepul</label>
+                        <input type="text" name="kategori_pengepul" class="form-control" id="text" placeholder="Enter Kategori Pengepul">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" type="submit">Save</button>

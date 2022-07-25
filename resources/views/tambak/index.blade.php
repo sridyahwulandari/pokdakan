@@ -31,7 +31,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>PJ</th>
-                                <th>Kode Tambak</th>
                                 <th>Nama Tambak</th>
                                 <th>Luas Tambak</th>
                                 <th>Kedalaman</th>
@@ -46,7 +45,6 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->users->name }}</td>
-                                <td>{{ $row->kode_tambak }}</td>
                                 <td>{{ $row->nama_tambak }}</td>
                                 <td>{{ $row->luas_tambak }}</td>
                                 <td>{{ $row->kedalaman }}</td>

@@ -12,7 +12,7 @@ class Supplier extends Model
     protected $table = 'suppliers';
 
     protected $fillable = [
-        'bahan_baku', 'slug'
+        'bahan_baku'
     ];
 
 

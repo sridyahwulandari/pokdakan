@@ -14,9 +14,9 @@ class PanenController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::where('aksi','panen')->get();
-        $jadwal = Jadwal::where('user_id',auth()->user()->id)->get();
-        // dd($jadwal);
+        $user = auth()->user();
+        $jadwal = Jadwal::where('aksi','panen')->where('user_id',auth()->user()->id)->get();
+        // $jadwal = Jadwal::where()->get();
         return view('panen.index', compact('jadwal'));
     }
 
@@ -31,6 +31,8 @@ class PanenController extends Controller
 
 
     }
+
+    
 
     /**
      * Store a newly created resource in storage.

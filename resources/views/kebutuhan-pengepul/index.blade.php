@@ -29,7 +29,7 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Pengepul</th>
+                                <th>Kategori Pengepul</th>
                                 <th>Kategori Budidaya</th>
                                 <th>Tanggal Kebutuhan</th>
                                 <th>Nama</th>
@@ -41,8 +41,8 @@
                         <tbody>
                             @forelse ($kebutuhanpengepul as $row)
                             <tr>
-                                <td>{{ $row->distributor->pengepul }}</td>
-                                <td>{{ $row->budidaya->kategori_budidaya }}</td>
+                                <td>{{ $row->pengepul->kategori_pengepul }}</td>
+                                <td>{{ $row->pembudidaya->kategori_pembudidaya }}</td>
                                 <td>{{ $row->tgl_kebutuhan }}</td>
                                 <td>{{ $row->nama }}</td>
                                 <td>{{ $row->jenis }}</td>

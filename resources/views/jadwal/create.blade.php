@@ -71,11 +71,14 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="tgl_panen">Prediksi Tanggal Panen</label>
+                        <input type="date" name="tgl_panen" class="form-control" id="text" placeholder="Enter Prediksi Tanggal Panen">
+                    </div>
+
+                    <div class="form-group">
                         <label for="aksi">Aksi</label>
                         <select name="aksi" class="form-control">
                             <option value="tebar_bibit">Tebar Bibit</option>
-                            <option value="pembesaran_ikan">Proses Pembesaran Ikan</option>
-                            <option value="panen">Panen</option>
                         </select>
                     </div>
 

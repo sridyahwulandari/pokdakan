@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budidaya;
+use App\Models\Pembudidaya;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-
-class BudidayaController extends Controller
+class PembudidayaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +14,17 @@ class BudidayaController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:budidaya-list|budidaya-create|budidaya-edit|budidaya-delete', ['only' => ['index', 'show']]);
-         $this->middleware('permission:budidaya-create', ['only' => ['create', 'store']]);
-         $this->middleware('permission:budidaya-edit', ['only' => ['edit', 'update']]);
-         $this->middleware('permission:budidaya-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:pembudidaya-list|pembudidaya-create|pembudidaya-edit|pembudidaya-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:pembudidaya-create', ['only' => ['create', 'store']]);
+         $this->middleware('permission:pembudidaya-edit', ['only' => ['edit', 'update']]);
+         $this->middleware('permission:pembudidaya-delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
-        $data = Budidaya::latest()->paginate(5);
-        $budidaya = Budidaya::all();
-        return view('budidaya.index', compact('budidaya'));
+        $data = Pembudidaya::latest()->paginate(5);
+        $pembudidaya = Pembudidaya::all();
+        return view('pembudidaya.index', compact('pembudidaya'));
     }
 
     /**
@@ -36,7 +34,7 @@ class BudidayaController extends Controller
      */
     public function create()
     {
-        return view('budidaya.create');
+        return view('pembudidaya.create');
     }
 
     /**
@@ -48,14 +46,13 @@ class BudidayaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'kategori_budidaya' => 'required|min:4',
+            'kategori_pembudidaya' => 'required|min:4',
         ]);
-        $budidaya = Budidaya::create([
-            'kategori_budidaya' => $request->kategori_budidaya, 
-            'slug' => Str::slug($request->kategori_budidaya)
+        $pembudidaya = Pembudidaya::create([
+            'kategori_pembudidaya' => $request->kategori_pembudidaya,
         ]);
 
-        return redirect()->route('budidaya.index')->with(['success' => 'Data Berhasil Disimpan']);
+        return redirect()->route('pembudidaya.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**
@@ -77,9 +74,9 @@ class BudidayaController extends Controller
      */
     public function edit($id)
     {
-        $budidaya = Budidaya::find($id);
+        $pembudidaya = Pembudidaya::find($id);
 
-        return view('budidaya.edit', compact('budidaya'));
+        return view('pembudidaya.edit', compact('pembudidaya'));
     }
 
     /**
@@ -92,12 +89,11 @@ class BudidayaController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->kategori_budidaya);
 
-        $budidaya = Budidaya::findOrFail($id);
-        $budidaya->update($data);
+        $pembudidaya = Pembudidaya::findOrFail($id);
+        $pembudidaya->update($data);
 
-        return redirect()->route('budidaya.index')->with(['success' => 'Data Berhasil Diubah']);
+        return redirect()->route('pembudidaya.index')->with(['success' => 'Data Berhasil Diubah']);
     }
 
     /**
@@ -108,10 +104,10 @@ class BudidayaController extends Controller
      */
     public function destroy($id)
     {
-        $budidaya = Budidaya::find($id);
+        $pembudidaya = Pembudidaya::find($id);
 
-        $budidaya->delete();
+        $pembudidaya->delete();
 
-        return redirect()->route('budidaya.index')->with(['success' => 'Data Berhasil Dihapus']);
+        return redirect()->route('pembudidaya.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
 }

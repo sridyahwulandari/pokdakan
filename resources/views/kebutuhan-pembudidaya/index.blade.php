@@ -42,7 +42,7 @@
                             @forelse ($kebutuhanpembudidaya as $row)
                             <tr>
                                 <td>{{ $row->supplier->bahan_baku }}</td>
-                                <td>{{ $row->budidaya->kategori_budidaya }}</td>
+                                <td>{{ $row->pembudidaya->kategori_pembudidaya }}</td>
                                 <td>{{ $row->tgl_kebutuhan }}</td>
                                 <td>{{ $row->nama }}</td>
                                 <td>{{ $row->jenis }}</td>

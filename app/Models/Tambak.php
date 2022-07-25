@@ -12,7 +12,7 @@ class Tambak extends Model
     protected $table = 'tambaks';
 
     protected $fillable = [
-        'user_id', 'kode_tambak', 'nama_tambak', 'luas_tambak', 'kedalaman', 'kapasitas_ikan', 'gambar_tambak', 'status'];
+        'user_id', 'nama_tambak', 'luas_tambak', 'kedalaman', 'kapasitas_ikan', 'gambar_tambak', 'status'];
 
     protected $hidden = [];
 

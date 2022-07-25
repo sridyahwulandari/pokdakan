@@ -14,9 +14,9 @@ class CreateKebutuhanPengepulsTable extends Migration
     public function up()
     {
         Schema::create('kebutuhan_pengepuls', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('distributor_id');
-            $table->integer('budidaya_id');
+            $table->id();
+            $table->integer('pengepul_id');
+            $table->integer('pembudidaya_id');
             $table->integer('user_id');
             $table->date('tgl_kebutuhan');
             $table->string('nama');

@@ -14,7 +14,7 @@ class CreateBeritasTable extends Migration
     public function up()
     {
         Schema::create('beritas', function (Blueprint $table) {
-                $table->bigIncrements('id');
+                $table->id();
                 $table->integer('user_id');
                 $table->integer('kategori');
                 $table->string('judul_berita');

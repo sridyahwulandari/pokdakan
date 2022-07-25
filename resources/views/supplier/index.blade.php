@@ -31,7 +31,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Bahan Baku</th>
-                                <th>Slug</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,7 +39,6 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->bahan_baku }}</td>
-                                <td>{{ $row->slug }}</td>
                                 <td>
                                     <a href="{{ route('supplier.edit', $row->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     

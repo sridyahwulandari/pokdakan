@@ -33,11 +33,11 @@
 								@csrf
                             
                                 <div class="form-group">
-                                    <strong>Name:</strong>
-                                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                                    <strong>Nama Lengkap:</strong>
+                                    {!! Form::text('name', null, array('placeholder' => 'Contoh : Sri Dyah Wulandari','class' => 'form-control')) !!}
                                 </div>
 								<div class="form-group">
-									<label for="name">{{ __('roles') }}</label>
+									<strong>Sebagai :</strong>
                                    <select class="form-control" id="roles" name="roles">
 									{{-- <option value="1"> Administrator </option> --}}
 									<option value="2"> Pembudidaya </option>
@@ -45,17 +45,25 @@
 									<option value="4"> Pengepul </option>
 								   </select>
 								</div>
+								<div class="form-group">
+                                    <strong>Alamat:</strong>
+                                    {!! Form::text('alamat', null, array('placeholder' => 'Contoh : Ds. Pekandangan Rt.54 Rw.01 Indramayu','class' => 'form-control')) !!}
+                                </div>
+								<div class="form-group">
+                                    <strong>No Telepon:</strong>
+                                    {!! Form::text('telepon', null, array('placeholder' => 'Contoh : 087654321455','class' => 'form-control')) !!}
+                                </div>
                                 <div class="form-group">
                                     <strong>Email:</strong>
-                                    {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                                    {!! Form::text('email', null, array('placeholder' => 'Contoh : sridyhwd@gmail.com','class' => 'form-control')) !!}
                                 </div>
                                 <div class="form-group">
                                     <strong>Password:</strong>
-                                    {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                                    {!! Form::password('password', array('placeholder' => 'Contoh : @Password123','class' => 'form-control')) !!}
                                 </div>
                                 <div class="form-group">
-                                    <strong>Confirm Password:</strong>
-                                    {!! Form::password('password_confirmation', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                                    <strong>Konfirmasi Password:</strong>
+                                    {!! Form::password('password_confirmation', array('placeholder' => 'Contoh : @Password123','class' => 'form-control')) !!}
                                 </div>
 
                                 <div class="form-group">

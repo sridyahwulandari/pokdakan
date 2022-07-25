@@ -14,10 +14,7 @@
 			<div class="card full-height">
 				<div class="card-header">
 					<div class="card-head-row">
-						<div class="card-title">Aktivitas Budidaya Ikan</div>
-                        @can('jadwal-create')
-                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Produk</a>
-                        @endcan
+						<div class="card-title">Hasil Panen Budidaya Ikan</div>
 					</div>
 				</div>
 				<div class="card-body">
@@ -32,8 +29,13 @@
                         <thead>
                             <tr>
                                 <th>Tambak</th>
-                                <th>Tanggal Panen</th>
-                                <th>Jumlah Panen</th>
+                                <th>Tanggal Tabur Bibit</th>
+                                <th>Jumlah Benih</th>
+                                <th>Tanggal Tabur Pakan</th>
+                                <th>Jumlah Pakan</th>
+                                <th>Jenis Pakan</th>
+                                <th>Usia Tambak</th>
+                                <th>Prediksi Panen</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -41,8 +43,13 @@
                             @forelse ($jadwal as $row)
                             <tr>
                                 <td>{{ $row->tambak->nama_tambak }}</td>
-                                <td>{{ $row->tgl_panen }}</td>
+                                <td>{{ $row->tgl_bibit }}</td>
                                 <td>{{ $row->jumlah_bibit }}</td>
+                                <td>{{ $row->tgl_pakan }}</td>
+                                <td>{{ $row->jumlah_pakan }}</td>
+                                <td>{{ $row->jenis_pakan }}</td>
+                                <td>{{ $row->usia_tambak }}</td>
+                                <td>{{ $row->tgl_panen }}</td>
                                 <td>
                                     {{-- <button type="button" class="btn btn-success btn-sm">Kembali</button>
                                     <button type="button" class="btn btn-danger btn-sm">Telat</button> --}}

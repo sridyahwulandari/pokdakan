@@ -24,15 +24,15 @@
                     @method('PUT')
 
                     <div class="form-group">
-                        <label for="budidaya">Kategori Budidaya</label>
+                        <label for="pembudidaya">Kategori Budidaya</label>
 
-                        <select name="budidaya_id" class="form-control">
-                            @foreach ($budidaya as $row)
-                            @if ($row->id == $kebutuhanpembudidaya->budidaya_id)
-                            <option value={{ $row->id }} selected='selected'> {{ $row->kategori_budidaya }}</option>
+                        <select name="pembudidaya_id" class="form-control">
+                            @foreach ($pembudidaya as $row)
+                            @if ($row->id == $kebutuhanpembudidaya->pembudidaya_id)
+                            <option value={{ $row->id }} selected='selected'> {{ $row->kategori_pembudidaya }}</option>
                             @else
                             <option value="{{ $row->id }}">
-                                {{ $row->kategori_budidaya }}</option>
+                                {{ $row->kategori_pembudidaya }}</option>
                                 
                             @endif
                             @endforeach

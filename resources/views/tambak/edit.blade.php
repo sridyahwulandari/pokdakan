@@ -22,12 +22,6 @@
                 <form method="post" action="{{ route('tambak.update', $tambak->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    
-                    <div class="form-group">
-                        <label for="kode_tambak">Kode Tambak</label>
-                        <input type="text" name="kode_tambak" class="form-control" id="text" 
-                        value="{{ $tambak->kode_tambak }}">
-                    </div>
 
                     <div class="form-group">
                         <label for="nama_tambak">Nama Tambak</label>

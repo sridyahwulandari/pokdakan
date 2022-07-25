@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budidaya;
+use App\Models\Pembudidaya;
 use App\Models\KebutuhanPembudidaya;
 use App\Models\Supplier;
 use App\Models\User;
@@ -39,10 +39,10 @@ class KebutuhanPembudidayaController extends Controller
     public function create()
     {
         $supplier = Supplier::all();
-        $budidaya = Budidaya::all();
+        $pembudidaya = Pembudidaya::all();
         return view('kebutuhan-pembudidaya.create',[
             'supplier' => $supplier,
-            'budidaya' => $budidaya,
+            'pembudidaya' => $pembudidaya,
         ]);
     }
 
@@ -78,13 +78,13 @@ class KebutuhanPembudidayaController extends Controller
     {
         $kebutuhanpembudidaya = KebutuhanPembudidaya::find($id);
         $supplier = Supplier::all();
-        $budidaya = Budidaya::all();
+        $pembudidaya = Pembudidaya::all();
         $user = User::all();
 
         return view('kebutuhan-pembudidaya.show', [
             'kebutuhanpembudidaya' => $kebutuhanpembudidaya,
             'supplier' => $supplier,
-            'budidaya' => $budidaya,
+            'pembudidaya' => $pembudidaya,
             'user' => $user,
         ]);
     }
@@ -99,13 +99,13 @@ class KebutuhanPembudidayaController extends Controller
     {
         $kebutuhanpembudidaya = KebutuhanPembudidaya::find($id);
         $supplier = Supplier::all();
-        $budidaya = Budidaya::all();
+        $pembudidaya = Pembudidaya::all();
         $user = User::all();
 
         return view('produk.edit', [
             'kebutuhanpembudidaya' => $kebutuhanpembudidaya,
             'supplier' => $supplier,
-            'budidaya' => $budidaya,
+            'pembudidaya' => $pembudidaya,
             'user' => $user,
         ]);
     }

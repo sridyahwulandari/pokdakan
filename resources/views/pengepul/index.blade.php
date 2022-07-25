@@ -15,7 +15,7 @@
 				<div class="card-header">
 					<div class="card-head-row">
 						<div class="card-title">Data Distributor</div>
-                        <a href="{{ route('distributor.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Distributor</a>
+                        <a href="{{ route('pengepul.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Distributor</a>
 					</div>
 				</div>
 				<div class="card-body">
@@ -30,21 +30,19 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Pengepul</th>
-                                <th>Slug</th>
+                                <th>Kategori Pengepul</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($distributor as $row)
+                            @forelse ($pengepul as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
-                                <td>{{ $row->pengepul }}</td>
-                                <td>{{ $row->slug }}</td>
+                                <td>{{ $row->kategori_pengepul }}</td>
                                 <td>
-                                    <a href="{{ route('distributor.edit', $row->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('pengepul.edit', $row->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     
-                                    <form action="{{ route('distributor.destroy', $row->id) }}" method="post" class="d-inline">
+                                    <form action="{{ route('pengepul.destroy', $row->id) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger btn-sm">

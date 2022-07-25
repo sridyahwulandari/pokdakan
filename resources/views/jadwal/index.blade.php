@@ -38,6 +38,7 @@
                                 <th>Jumlah Pakan</th>
                                 <th>Jenis Pakan</th>
                                 <th>Usia Tambak</th>
+                                <th>Prediksi Panen</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -51,20 +52,17 @@
                                 <td>{{ $row->jumlah_pakan }}</td>
                                 <td>{{ $row->jenis_pakan }}</td>
                                 <td>{{ $row->usia_tambak }}</td>
+                                <td>{{ $row->tgl_panen }}</td>
                                 <td>
                                     {{-- <button type="button" class="btn btn-success btn-sm">Kembali</button>
                                     <button type="button" class="btn btn-danger btn-sm">Telat</button> --}}
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                         <div class="btn-group" role="group">
-                                          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{-- @if($row->aksi == 1 )
-                                            a
-                                            @else
-                                            b
-                                            @endif --}}
+                                          <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Tebar Bibit
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="dropdown-item" href="/jadwal/update-pembesaran/{{$row->id}}">Pembesaran</a>
+                                            <a class="dropdown-item" href="/pembesaran/update-panen/{{$row->id}}">Pembesaran</a>
                                             <a class="dropdown-item" href="">Panen</a>
                                           </div>
                                         </div>

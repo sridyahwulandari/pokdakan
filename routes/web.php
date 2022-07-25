@@ -55,8 +55,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
     Route::resource('supplier', 'SupplierController');
-    Route::resource('budidaya', 'BudidayaController');
-    Route::resource('distributor', 'DistributorController');
+    Route::resource('pembudidaya', 'PembudidayaController');
+    Route::resource('pengepul', 'PengepulController');
     Route::resource('berita', 'BeritaController');
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('produk', 'ProdukController');
@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('kebutuhan-pembudidaya', 'KebutuhanPembudidayaController');
     
     // Route::post('/kirim', [FrontController::class, 'kirim']);
-    Route::get('jadwal/update-pembesaran/{id}', 'JadwalController@updatePAksi');
-    Route::get('pembesaran/update-panen/{id}', 'PembesaranController@updatePanenAksi');
+    Route::get('jadwal/update-pembesaran/{id}', 'JadwalController@updatePaksi');
+    Route::get('pembesaran/update-panen/{id}', 'PembesaranController@updatePembesaranAksi');
+    Route::get('panen/update-panen/{id}', 'PanenController@updatePanenAksi');
 });

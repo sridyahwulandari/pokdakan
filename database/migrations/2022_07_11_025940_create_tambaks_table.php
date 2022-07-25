@@ -14,9 +14,8 @@ class CreateTambaksTable extends Migration
     public function up()
     {
         Schema::create('tambaks', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('user_id');
-            $table->string('kode_tambak');
             $table->string('nama_tambak');
             $table->string('luas_tambak');
             $table->string('kedalaman');
