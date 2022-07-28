@@ -16,12 +16,14 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="avatar">
-                            <img src="../assets/img/profile2.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('uploads/' . auth()->user()->foto) }}" alt="..." class="avatar-img rounded-circle">
                         </div>
                         <div class="info-post ml-2">
                             <p class="username">{{ $produk->users->name }}</p>
                             <p class="date text-muted">{{ $produk->users->telepon }}</p>
+                            <p class="date text-muted">{{ $produk->users->alamat }}</p>
                         </div>
+                        
                     </div>
                 </div>
             </div>

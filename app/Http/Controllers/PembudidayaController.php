@@ -22,7 +22,8 @@ class PembudidayaController extends Controller
 
     public function index()
     {
-        $data = Pembudidaya::latest()->paginate(5);
+        // $data = Pembudidaya::latest()->paginate(100);
+        $data = Pembudidaya::orderBy('id', 'desc')->paginate(100);
         $pembudidaya = Pembudidaya::all();
         return view('pembudidaya.index', compact('pembudidaya'));
     }

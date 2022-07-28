@@ -29,7 +29,7 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>PJ</th>
                                 <th>Nama Tambak</th>
                                 <th>Luas Tambak</th>
@@ -43,7 +43,7 @@
                         <tbody>
                             @forelse ($tambak as $row)
                             <tr>
-                                <td>{{ $row->id }}</td>
+                                <td>{{ $loop->iteration ?? '' }}</td>
                                 <td>{{ $row->users->name }}</td>
                                 <td>{{ $row->nama_tambak }}</td>
                                 <td>{{ $row->luas_tambak }}</td>

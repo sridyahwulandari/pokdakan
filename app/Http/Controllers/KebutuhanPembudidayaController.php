@@ -18,7 +18,7 @@ class KebutuhanPembudidayaController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:kebutuhan-pembudidaya-list|kebutuhan-pembudidaya-create|kebutuhan-pembudidaya-edit|kebutuhan-pembudidaya-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:kebutuhan-pembudidaya-list|kebutuhan-pembudidaya-create|kebutuhan-pembudidaya-edit|kebutuhan-pembudidaya-delete|kebutuhan-pembudidaya-detail', ['only' => ['index', 'show']]);
          $this->middleware('permission:kebutuhan-pembudidaya-create', ['only' => ['create', 'store']]);
          $this->middleware('permission:kebutuhan-pembudidaya-edit', ['only' => ['edit', 'update']]);
          $this->middleware('permission:kebutuhan-pembudidaya-delete', ['only' => ['destroy']]);
@@ -29,6 +29,13 @@ class KebutuhanPembudidayaController extends Controller
         $kebutuhanpembudidaya = KebutuhanPembudidaya::where('user_id',auth()->user()->id)->get();
         $user = auth()->user();
         return view('kebutuhan-pembudidaya.index', compact('kebutuhanpembudidaya'));
+    }
+
+    public function detailkebutuhanpembudidaya()
+    {
+        $kebutuhanpembudidaya = KebutuhanPembudidaya::all();
+        $user = auth()->user();
+        return view('kebutuhan-pembudidaya.detail', compact('kebutuhanpembudidaya'));
     }
 
     /**

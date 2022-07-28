@@ -16,11 +16,11 @@
             <article class="entry entry-single">
 
               <div class="entry-gambar">
-                <img src="{{ asset('uploads/'. $produk->gambar_produk)}}" alt="" class="img-fluid">
+                <img src="{{ asset('uploads/'. $produk->gambar_produk_supplier)}}" alt=""  class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="">{{ $produk->kategori->nama_kategori }} - {{ $produk->jenis_ikan }}</a>
+                <a href="">{{ $produk->supplier->bahan_baku }} - {{ $produk->jenis_pakan }}</a>
               </h2>
 
               <div class="entry-meta">
@@ -41,7 +41,7 @@
                 <p>
                   {!! $produk->deskripsi !!}
                 </p>
-              <h3>Daftar Harga {{ $produk->jenis_ikan }} Per Kilogram</h3>
+              <h3>Daftar Harga {{ $produk->jenis_pakan }} Per Kilogram</h3>
                 <table class="col-md-8">
                   <tr>
                       <th>Author</th>
@@ -49,55 +49,41 @@
                       <th>Jenis Ikan</th>
                       <th>Harga</th>
                       <th>Stok</th>
-                      <th>Alamat</th>
-                      <th>No Tlpn/Wa</th>
                   </tr>
                   <tr>
                       <td align="center">{{ $produk->users->name }}</td>
-                      <td align="center">{{ $produk->kategori->nama_kategori }}</td>
-                      <td align="center">{{ $produk->jenis_ikan }}</td>
+                      <td align="center">{{ $produk->supplier->bahan_baku }}</td>
+                      <td align="center">{{ $produk->jenis_pakan }}</td>
                       <td align="center">Rp. {{ $produk->harga }}/Kg</td>
                       <td align="center">{{ $produk->stok }}/Kg</td>
-                      <td align="center">{{ $produk->alamat }}</td>
-                      <td align="center">{{ $produk->notlpn }}</td>
                   </tr>
                 </table>
                     
             </article><!-- End blog entry -->
             {{-- @endforeach --}}
-            <div class="entry-video">
-              <video width="500" height="500" controls preload>
-                <source src="{{ asset('uploads/'. $produk->video_produk)}}" type="video/mp4">
-                </video>
-            </div>
         </div>
         <div class="col-lg-4">
-
           <div class="sidebar">
 
-            <h3 class="sidebar-title">Produk</h3>
+            <h3 class="sidebar-title">Supplier</h3>
+            
             <div class="sidebar-item recent-posts">
               <div class="post-item clearfix">
-                <img src="{{ asset('uploads/'. $produk->gambar_produk)}}" alt="">
-                <h4><a href="blog-single.html">{{ $produk->kategori->nama_kategori }} - {{ $produk->jenis_ikan }}</a></h4>
-                <time datetime="2020-01-01">{{ $produk->created_at }}</time>
-              </div>
+                <img src="{{ asset('uploads/'. $produk->users->foto)}}" alt="">
+              </div> 
+              <p>{{ $produk->users->name }}</p>
+                <p>{{ $produk->users->alamat }}</p>
+                <p>{{ $produk->users->telepon }}</p>
+                <a href="https://api.whatsapp.com/send?phone={{ $produk->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('web/img/hubungiwa.png')}}"></a>
             </div><!-- End sidebar recent posts-->
+	
 
-            <h3 class="sidebar-title">Blog</h3>
-            <div class="sidebar-item recent-posts">
-              <div class="post-item clearfix">
-                <img src="{{ asset('uploads/'. $produk->gambar_produk)}}" alt="">
-                <h4><a href="blog-single.html">{{ $produk->kategori->nama_kategori }} - {{ $produk->jenis_ikan }}</a></h4>
-                <time datetime="2020-01-01">{{ $produk->created_at }}</time>
-              </div>
-
-            </div><!-- End sidebar recent posts-->
 
           </div><!-- End sidebar -->
-
         </div><!-- End blog sidebar -->
-      </div>
+      
+    </div>
+
     </section><!-- End Blog Single Section -->
 
 @endsection

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
 use App\Models\Berita;
 use App\Models\Edukasi;
+use App\Models\Jadwal;
+use App\Models\Produk;
 use App\Models\User;
 
 class FrontController extends Controller
@@ -55,20 +57,39 @@ class FrontController extends Controller
             'berita' => $berita,
         ]);
     }
-
-    public function edukasiFront()
+    
+    public function produkFront()
     {
-        $edukasi = Edukasi::all();
-        return view('frontend.edukasi-front.index', [
-            'edukasi' => $edukasi,
+        $produktotal = Produk::count();
+        $usertotal = User::count();
+        $jadwaltotal = Jadwal::count();
+        $beritatotal = Berita::count();
+// dd($produktotal);
+        $produk = Produk::all();
+        return view('frontend.produk-front.index', [
+            'produk' => $produk,
+            'produktotal' => $produktotal,
+            'usertotal' => $usertotal,
+            'jadwaltotal' => $jadwaltotal,
+            'beritatotal' => $beritatotal,
+        ]);
+        // return view('home', $data);
+    }
+
+    public function produkFrontDetail($slug)
+    {
+        $produk = Produk::all();
+        $produk = Produk::where('slug', $slug)->first();
+        return view('frontend.produk-front-detail.index', [
+            'produk' => $produk,
         ]);
     }
 
-    public function edukasiFrontDetail($slug)
+    public function jadwalFront()
     {
-        $edukasi = Edukasi::where('slug', $slug)->first();
-        return view('frontend.edukasi-front-detail.index', [
-            'edukasi' => $edukasi,
+        $jadwal = Jadwal::all();
+        return view('frontend.jadwal-front.index', [
+            'jadwal' => $jadwal,
         ]);
     }
 

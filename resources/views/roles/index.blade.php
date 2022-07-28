@@ -28,7 +28,7 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Name</th>
                                 <th>Action</th>
                             </tr>
@@ -36,7 +36,7 @@
                         <tbody>
                             @forelse ($data as $key => $role)
                             <tr>
-                                <td>{{ $role->id }}</td>
+                                <td>{{ $loop->iteration ?? '' }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td>
                                     <div class="form-button-action">

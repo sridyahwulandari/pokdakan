@@ -9,8 +9,9 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          @foreach ($berita as $key => $row)
+          
           <div class="col-lg-8 entries">
+            @foreach ($berita as $key => $row)
 
             <article class="entry">
 
@@ -36,27 +37,27 @@
               </div>
 
             </article><!-- End blog entry -->
+            @endforeach
 
           </div><!-- End blog entries list -->
-
           <div class="col-lg-4">
 
             <div class="sidebar">
-
               <h3 class="sidebar-title">Recent Posts</h3>
+              @foreach ($berita as $key => $row)
               <div class="sidebar-item recent-posts">
                 <div class="post-item clearfix">
                   <img src="{{ asset('uploads/'. $row->gambar_berita)}}" alt="">
-                  <h4><a href="blog-single.html">{{ $row->judul_berita }}</a></h4>
+                  <h4><a href="{{ route('berita-front-detail', $row->slug)}}">{{ $row->judul_berita }}</a></h4>
                   <time>{{ $row->created_at }}</time>
                 </div>
-
+              @endforeach
               </div><!-- End sidebar recent posts-->
 
             </div><!-- End sidebar -->
 
           </div><!-- End blog sidebar -->
-          @endforeach
+          
         </div>
 
       </div>

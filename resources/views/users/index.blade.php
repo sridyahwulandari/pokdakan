@@ -12,14 +12,18 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">Data User</h4>
+                        <h4 class="card-title">Data Pengguna</h4>
                         @can('user-create')
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Users</a>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Pengguna</a>
                         @endcan
                     </div>
                 </div>
                 <div class="card-body">
-        
+                    @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p>{{ \Session::get('success') }}</p>
+                    </div>
+                     @endif
                     <div class="table-responsive">
                         <table id="add-row" class="display table table-striped table-hover" >
                             <thead>
@@ -35,7 +39,7 @@
                             <tbody>
                                 @forelse ($data as $key => $user)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $loop->iteration ?? '' }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
@@ -72,6 +76,7 @@
                                     @endforelse
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>

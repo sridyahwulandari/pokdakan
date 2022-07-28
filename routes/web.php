@@ -36,8 +36,9 @@ Route::get('/beranda', [FrontController::class, 'beranda']);
 Route::get('/beranda-detail', [FrontController::class, 'berandaDetail']);
 Route::get('/berita-front', [FrontController::class, 'beritaFront']);
 Route::get('/berita-front-detail/{slug}', [FrontController::class, 'beritaFrontDetail'])->name('berita-front-detail');
-Route::get('/edukasi-front', [FrontController::class, 'edukasiFront']);
-Route::get('/edukasi-front-detail/{slug}', [FrontController::class, 'edukasiFrontDetail'])->name('edukasi-front-detail');
+Route::get('/produk-front', [FrontController::class, 'produkFront']);
+Route::get('/produk-front-detail/{slug}', [FrontController::class, 'produkFrontDetail'])->name('produk-front-detail');
+Route::get('/jadwal-front', [FrontController::class, 'jadwalFront']);
 Route::get('/tentang-kami', [FrontController::class, 'tentang']);
 Route::get('/formemail', [FrontController::class, 'formemail']);
 Route::post('/kirim', [FrontController::class, 'kirim']);
@@ -63,10 +64,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('produktersedia', 'ProdukController@produktersedia')->name('produk.produktersedia');
     Route::resource('tambak', 'TambakController');
     Route::resource('jadwal', 'JadwalController');
+    Route::resource('aktivitas', 'AktivitasController');
     Route::resource('pembesaran', 'PembesaranController');
     Route::resource('panen', 'PanenController');
     Route::resource('kebutuhan-pengepul', 'KebutuhanPengepulController');
+    Route::get('detailkebutuhanpengepul', 'KebutuhanPengepulController@detailkebutuhanpengepul')->name('kebutuhanpengepul.detailkebutuhanpengepul');
     Route::resource('kebutuhan-pembudidaya', 'KebutuhanPembudidayaController');
+    Route::get('detailkebutuhanpembudidaya', 'KebutuhanPembudidayaController@detailkebutuhanpembudidaya')->name('kebutuhanpembudidaya.detailkebutuhanpembudidaya');
     
     // Route::post('/kirim', [FrontController::class, 'kirim']);
     Route::get('jadwal/update-pembesaran/{id}', 'JadwalController@updatePaksi');

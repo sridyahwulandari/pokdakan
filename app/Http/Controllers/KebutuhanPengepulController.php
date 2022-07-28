@@ -18,7 +18,7 @@ class KebutuhanPengepulController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:kebutuhan-pengepul-list|kebutuhan-pengepul-create|kebutuhan-pengepul-edit|kebutuhan-pengepul-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:kebutuhan-pengepul-list|kebutuhan-pengepul-create|kebutuhan-pengepul-edit|kebutuhan-pengepul-delete|kebutuhan-pengepul-detail', ['only' => ['index', 'show']]);
          $this->middleware('permission:kebutuhan-pengepul-create', ['only' => ['create', 'store']]);
          $this->middleware('permission:kebutuhan-pengepul-edit', ['only' => ['edit', 'update']]);
          $this->middleware('permission:kebutuhan-pengepul-delete', ['only' => ['destroy']]);
@@ -29,6 +29,13 @@ class KebutuhanPengepulController extends Controller
         $kebutuhanpengepul = KebutuhanPengepul::all();
         $user = auth()->user();
         return view('kebutuhan-pengepul.index', compact('kebutuhanpengepul'));
+    }
+
+    public function detailkebutuhanpengepul()
+    {
+        $kebutuhanpengepul = KebutuhanPengepul::all();
+        $user = auth()->user();
+        return view('kebutuhan-pengepul.detail', compact('kebutuhanpengepul'));
     }
 
     /**

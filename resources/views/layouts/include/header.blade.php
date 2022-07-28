@@ -1,8 +1,8 @@
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
-				
-				{{-- <a href="index.html" class="logo">
+							
+				<a href="index.html" class="logo">
 					<img src="{{ asset('assets/img/logo.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
 					<button class="btn btn-toggle toggle-sidebar">
 						<i class="icon-menu"></i>
 					</button>
-				</div> --}}
+				</div>
 			</div>
 			<!-- End Logo Header -->
 

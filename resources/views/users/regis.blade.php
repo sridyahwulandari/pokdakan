@@ -31,7 +31,6 @@
 							<h4 class="card-title">{{ __('Register') }}</h4>
 							{!! Form::open(array('route' => 'user.store_regis','method'=>'POST','enctype' => 'multipart/form-data')) !!}
 								@csrf
-                            
                                 <div class="form-group">
                                     <strong>Nama Lengkap:</strong>
                                     {!! Form::text('name', null, array('placeholder' => 'Contoh : Sri Dyah Wulandari','class' => 'form-control')) !!}
@@ -49,28 +48,32 @@
                                     <strong>Alamat:</strong>
                                     {!! Form::text('alamat', null, array('placeholder' => 'Contoh : Ds. Pekandangan Rt.54 Rw.01 Indramayu','class' => 'form-control')) !!}
                                 </div>
-								<div class="form-group">
+								<div class="row">
+								<div class="col-md-6 form-group">
                                     <strong>No Telepon:</strong>
                                     {!! Form::text('telepon', null, array('placeholder' => 'Contoh : 087654321455','class' => 'form-control')) !!}
                                 </div>
-                                <div class="form-group">
+                                <div class="col-md-6 form-group">
                                     <strong>Email:</strong>
                                     {!! Form::text('email', null, array('placeholder' => 'Contoh : sridyhwd@gmail.com','class' => 'form-control')) !!}
                                 </div>
-                                <div class="form-group">
+								</div>
+								<div class="row">
+                                <div class="col-md-6 form-group">
                                     <strong>Password:</strong>
                                     {!! Form::password('password', array('placeholder' => 'Contoh : @Password123','class' => 'form-control')) !!}
                                 </div>
-                                <div class="form-group">
+                                <div class="col-md-6 form-group">
                                     <strong>Konfirmasi Password:</strong>
                                     {!! Form::password('password_confirmation', array('placeholder' => 'Contoh : @Password123','class' => 'form-control')) !!}
                                 </div>
+								</div>
 
                                 <div class="form-group">
                                     <label for="foto">Foto</label>
                                     <input type="file" name="foto" class="form-control">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Daftar</button>
 								<div class="mt-4 text-center">
                                     
 									Don't have an account? <a href="{{ route('login') }}">Masuk</a>

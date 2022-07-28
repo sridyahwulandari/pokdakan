@@ -62,7 +62,7 @@ class ProdukController extends Controller
     {
         $this->validate($request, [
             'nama_produk' => 'required',
-            'jenis_pakan' => 'required',
+            'jenis' => 'required',
             'merk' => 'required',
             'kondisi' => 'required',
             'berat' => 'required',
@@ -129,14 +129,14 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(empty($request->file('gambar_produk_supplier_supplier'))){
+        if(empty($request->file('gambar_produk_supplier'))){
             $produk = Produk::find($id);
             $produk->update([
                 'user_id' => Auth::id(),
                 'supplier_id' => $request->supplier_id,
                 'nama_produk' => $request->nama_produk,
                 'slug' => Str::slug($request->nama_produk),
-                'jenis_pakan' => $request->jenis_pakan,
+                'jenis' => $request->jenis,
                 'merk' => $request->merk,
                 'kondisi' => $request->kondisi,
                 'berat' => $request->berat,
@@ -154,7 +154,7 @@ class ProdukController extends Controller
                 'supplier_id' => $request->supplier_id,
                 'nama_produk' => $request->nama_produk,
                 'slug' => Str::slug($request->nama_produk),
-                'jenis_pakan' => $request->jenis_pakan,
+                'jenis' => $request->jenis,
                 'merk' => $request->merk,
                 'kondisi' => $request->kondisi,
                 'berat' => $request->berat,

@@ -10,12 +10,12 @@
 
         <div class="row">
 
-          <div class="col-lg-8 entries">
+          <div class="col-lg-12 entries">
 
             <article class="entry entry-single">
 
               <div class="entry-img">
-                <img src="{{ asset('uploads/'. $berita->gambar_berita)}}" alt="" class="img-fluid">
+                <img src="{{ asset('uploads/'. $berita->gambar_berita)}}" alt="" class="col-lg-12 img-fluid">
               </div>
 
               <h2 class="entry-title">
@@ -39,24 +39,6 @@
             </article><!-- End blog entry -->
 
           </div><!-- End blog entries list -->
-
-          <div class="col-lg-4">
-
-            <div class="sidebar">
-
-              <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
-                <div class="post-item clearfix">
-                  <img src="{{ asset('uploads/'. $berita->gambar_berita)}}" alt="">
-                  <h4><a href="blog-single.html">{{ $berita->judul_berita }}</a></h4>
-                  <time>{{ $berita->created_at }}</time>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div><!-- End sidebar -->
-
-          </div><!-- End blog sidebar -->
 
         </div>
 

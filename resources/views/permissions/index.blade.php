@@ -9,34 +9,30 @@
 <div class="page-inner mt--5">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="card full-height">
-				<div class="card-header">
-					<div class="card-head-row">
-						<div class="card-title">Data Permission</div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Data Permission</h4>
                         @can('role-create')
                         <a href="{{ route('permissions.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Permission</a>
                         @endcan
-					</div>
-				</div>
-				<div class="card-body">
-                    @if (\Session::has('success'))
-                    <div class="alert alert-success">
-                        <p>{{ \Session::get('success') }}</p>
                     </div>
-                     @endif
-					<div class="table-responsive">
-					<table class="table table-bordered">
-                        <thead>
+                </div>
+                <div class="card-body">
+        
+                    <div class="table-responsive">
+                        <table id="add-row" class="display table table-striped table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($data as $key => $permission)
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($data as $key => $permission)
-                            <tr>
-                                <td>{{ $permission->id }}</td>
+                                <td>{{ $loop->iteration ?? '' }}</td>
                                 <td>{{ $permission->name }}</td>
                                 <td>
                                     <div class="form-button-action">
@@ -61,15 +57,13 @@
                                 <td colspan="6" class="text-center">Data Masih Kosong</td>
                             </tr>
                             @endforelse
-                          
-                        </tbody>
-                    </table>
-                    {{ $data->render() }}
-					</div>
-
-				</div>
-			</div>
-		</div>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
 	</div>
 </div>
+
 @endsection

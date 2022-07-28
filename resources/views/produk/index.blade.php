@@ -33,7 +33,7 @@
                             <tr>
                                 <th>Kategori</th>
                                 <th>Nama Produk</th>
-                                <th>Jenis Pakan</th>
+                                <th>Jenis</th>
                                 <th>Merk</th>
                                 <th>Kondisi</th>
                                 <th>Berat</th>
@@ -48,7 +48,7 @@
                             <tr>
                                 <td>{{ $row->supplier->bahan_baku }}</td>
                                 <td>{{ $row->nama_produk }}</td>
-                                <td>{{ $row->jenis_pakan }}</td>
+                                <td>{{ $row->jenis }}</td>
                                 <td>{{ $row->merk }}</td>
                                 <td>{{ $row->kondisi }}</td>
                                 <td>{{ $row->berat }}</td>

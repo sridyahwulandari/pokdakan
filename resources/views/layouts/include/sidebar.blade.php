@@ -71,7 +71,7 @@
 									<li>
 										<a href="{{ route('users.index') }}">
 											<i class="fas fa-users"></i>
-											<p>User</p>
+											<p>Pengguna</p>
 										</a>
 									</li>
 									@endcan
@@ -105,7 +105,7 @@
 									@can('supplier-list')
 									<li>
 										<a href="{{ route('supplier.index') }}">
-											<i class="fas fa-desktop"></i>
+											<i class="fas fa-user-shield"></i>
 											<p>Supplier</p>
 										</a>
 									</li>
@@ -113,7 +113,7 @@
 									@can('pembudidaya-list')
 									<li>
 										<a href="{{ route('pembudidaya.index') }}">
-											<i class="fas fa-desktop"></i>
+											<i class="fas fa-users-cog"></i>
 											<p>Pembudidaya</p>
 										</a>
 									</li>
@@ -121,7 +121,7 @@
 									@can('pengepul-list')
 									<li>
 										<a href="{{ route('pengepul.index') }}">
-											<i class="fas fa-desktop"></i>
+											<i class="fas fa-user-tag"></i>
 											<p>Pengepul</p>
 										</a>
 									</li>
@@ -221,6 +221,13 @@
 										</div>
 									</li>
 									@endcan
+									@can('aktivitas')
+									<li>
+										<a href="{{ route('aktivitas.index') }}">
+											<span class="sub-item">Aktvitas Pembudidaya</span>
+										</a>
+									</li>
+									@endcan
 									@can('kebutuhan-pembudidaya-list')
 									<li>
 										<a href="{{ route('kebutuhan-pembudidaya.index') }}">
@@ -228,11 +235,18 @@
 										</a>
 									</li>
 									@endcan
+									@can('kebutuhan-pembudidaya-detail')
+									<li>
+										<a href="{{ route('kebutuhanpembudidaya.detailkebutuhanpembudidaya') }}">
+											<span class="sub-item">Kebutuhan Pembudidaya</span>
+										</a>
+									</li>
+									@endcan
 								</ul>
 							</div>
 						</li>
 						@endcan
-						@can('kebutuhan-pengepul-list')
+						@can('kebutuhan-pengepul')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#charts">
 								<i class="fas fa-user"></i>
@@ -244,6 +258,13 @@
 									@can('kebutuhan-pengepul-list')
 									<li>
 										<a href="{{ route('kebutuhan-pengepul.index') }}">
+											<span class="sub-item">Kebutuhan Pengepul</span>
+										</a>
+									</li>
+									@endcan
+									@can('kebutuhan-pengepul-detail')
+									<li>
+										<a href="{{ route('kebutuhanpengepul.detailkebutuhanpengepul') }}">
 											<span class="sub-item">Kebutuhan Pengepul</span>
 										</a>
 									</li>

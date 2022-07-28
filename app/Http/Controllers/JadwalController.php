@@ -37,6 +37,12 @@ class JadwalController extends Controller
         return view('jadwal.hasilpanen', compact('jadwal'));
     }
 
+    // public function jadwal()
+    // {
+    //     $jadwal = Jadwal::all();
+    //     return view('jadwal.jadwal', compact('jadwal'));
+    // }
+
 
     /**
      * Show the form for creating a new resource.
