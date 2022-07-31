@@ -246,6 +246,14 @@
 							</div>
 						</li>
 						@endcan
+						@can('event-list')
+						<li class="nav-item">
+							<a href="{{ route('event.index') }}">
+								<i class="fas fa-calendar-alt"></i>
+								<p>Event</p>
+							</a>
+						</li>
+						@endcan
 						@can('kebutuhan-pengepul')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#charts">

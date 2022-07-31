@@ -74,7 +74,8 @@
               <p>{{ $produk->users->name }}</p>
                 <p>{{ $produk->users->alamat }}</p>
                 <p>{{ $produk->users->telepon }}</p>
-                <a href="https://api.whatsapp.com/send?phone={{ $produk->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('web/img/hubungiwa.png')}}"></a>
+                <a href="https://api.whatsapp.com/send?phone={{ $produk->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('web/img/chat.png')}}"></a>
+                <br>
             </div><!-- End sidebar recent posts-->
 	
 

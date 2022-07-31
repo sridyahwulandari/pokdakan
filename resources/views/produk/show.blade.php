@@ -92,7 +92,7 @@
                         <div class="col-md-4 form-group">
                             <label for="harga">Harga</label>
                             <input type="text" name="harga" class="form-control" id="text" 
-                            value="{{ $produk->harga }}">
+                            value="Rp. {{ number_format ($produk->harga) }}">
                         </div>
                         <div class="col-md-4 form-group">
                             <label for="stok">Stok</label>

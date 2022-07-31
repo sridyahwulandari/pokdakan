@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
 use App\Models\Berita;
 use App\Models\Edukasi;
+use App\Models\Event;
 use App\Models\Jadwal;
 use App\Models\Produk;
 use App\Models\User;
@@ -82,6 +83,14 @@ class FrontController extends Controller
         $produk = Produk::where('slug', $slug)->first();
         return view('frontend.produk-front-detail.index', [
             'produk' => $produk,
+        ]);
+    }
+
+    public function eventFront($request)
+    {
+        $event = Event::where('tgl_mulai',$request->tgl_mulai)->get();
+        return view('frontend.event-front.index', [
+            'event' => $event,
         ]);
     }
 

@@ -36,7 +36,7 @@
 									<label for="email">Email</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 									<div class="invalid-feedback">
-										Email is invalid
+										Email Salah
 									</div>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
 									
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 								    <div class="invalid-feedback">
-								    	Password is required
+								    	Password Salah
 							    	</div>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                                 </div>
 								<div class="mt-4 text-center">
                                     
-									Don't have an account? <a href="{{ route('user.regis') }}">Daftar</a>
+									Belum Punya Akun <a href="{{ route('user.regis') }}">Daftar</a>
 								</div>
 							</form>
 						</div>
