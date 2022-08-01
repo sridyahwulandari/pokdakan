@@ -52,7 +52,7 @@ class JadwalController extends Controller
     public function create()
     {
         // $tambak = Tambak::all();
-        $tambak = Tambak::where('user_id',auth()->user()->id)->get();
+        $tambak = Tambak::where('user_id',auth()->user()->id)->where('status',1)->get();
         return view('jadwal.create', compact('tambak'));
     }
 

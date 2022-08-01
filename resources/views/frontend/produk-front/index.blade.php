@@ -75,6 +75,13 @@
         </div>
 
         @endforeach
+        <div class="text-center mt-4">
+          <form action="/produk-front" method="get">
+            @csrf
+            <input type="hidden" name="more_view" value="{{($total_view)}}" class="form-control">
+            <button class="btn btn-primary" type="submit">{{$total_view}} More Views</button>
+          </form>
+        </div>
       </div>
 
       

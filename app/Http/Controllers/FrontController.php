@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
 use App\Models\Berita;
-use App\Models\Edukasi;
 use App\Models\Event;
 use App\Models\Jadwal;
 use App\Models\Produk;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -59,21 +59,40 @@ class FrontController extends Controller
         ]);
     }
     
-    public function produkFront()
+    public function produkFront(Request $request)
     {
-        $produktotal = Produk::count();
+        if($request->more_view){
+            $produktotal = Produk::count();
         $usertotal = User::count();
         $jadwaltotal = Jadwal::count();
         $beritatotal = Berita::count();
-// dd($produktotal);
-        $produk = Produk::all();
+        // dd($produktotal);
+        $totalP = $request->more_view * 3;
+        $produk = Produk::paginate($totalP);
         return view('frontend.produk-front.index', [
             'produk' => $produk,
             'produktotal' => $produktotal,
             'usertotal' => $usertotal,
             'jadwaltotal' => $jadwaltotal,
             'beritatotal' => $beritatotal,
+            'total_view' => ($request->more_view) ? $totalP : '9',
         ]);
+        }else{
+            $produktotal = Produk::count();
+        $usertotal = User::count();
+        $jadwaltotal = Jadwal::count();
+        $beritatotal = Berita::count();
+// dd($produktotal);
+        $produk = Produk::paginate(3);
+        return view('frontend.produk-front.index', [
+            'produk' => $produk,
+            'produktotal' => $produktotal,
+            'usertotal' => $usertotal,
+            'jadwaltotal' => $jadwaltotal,
+            'beritatotal' => $beritatotal,
+            'total_view' => ($request->more_view) ? $request->more_view : '9',
+        ]);
+        }
         // return view('home', $data);
     }
 
@@ -86,12 +105,27 @@ class FrontController extends Controller
         ]);
     }
 
-    public function eventFront($request)
+    public function eventFront(Request $request)
     {
-        $event = Event::where('tgl_mulai',$request->tgl_mulai)->get();
-        return view('frontend.event-front.index', [
-            'event' => $event,
-        ]);
+        if($request->tgl_selesai){
+            // dd($request->tgl_selesai);
+            $event =  DB::table('events')->where('tgl_selesai',$request->tgl_selesai)->latest()->get();
+            $tgl_selesei = DB::table('events')->select('events.tgl_selesai')->get();
+            // dd($event);
+            return view('frontend.event-front.index', [
+                'event' => $event,
+                'tgl_selesai' => $tgl_selesei,
+            ]);
+        }else{
+            $event = Event::all();
+            $tgl_selesei = DB::table('events')->select('events.tgl_selesai')->get();
+            // dd($coba);
+            return view('frontend.event-front.index', [
+                'event' => $event,
+                'tgl_selesai' => $tgl_selesei,
+            ]);
+        }
+
     }
 
     public function jadwalFront()

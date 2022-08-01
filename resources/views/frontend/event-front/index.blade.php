@@ -11,7 +11,18 @@
       <header class="section-header">
         <p>Event</p>
       </header>
-
+      <div class="text-center">
+        <form action="/event-front" method="get">
+          <select name="tgl_selesai" class="form-control" id="">
+            <option value="">--Pilih Tanggal Yang Sesuai</option>
+            @foreach ($tgl_selesai as $tgl_s)
+            <option value="{{$tgl_s->tgl_selesai}}">{{$tgl_s->tgl_selesai}}</option>
+            @endforeach
+          </select>
+          <br>
+          <button class="btn btn-primary" type="submit">Cari berdasarkan tanggal</button>
+      </form>
+      </div>
       <div class="row">
         @foreach ($event as $key => $row)
         <div class="col-lg-4 mt-5">
