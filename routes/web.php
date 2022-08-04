@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AcaraController;
+use App\Http\Controllers\AktivitasController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CountdownTimerController;
-
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ShareSocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,8 @@ Route::post('/kirim', [FrontController::class, 'kirim']);
 Route::get('regis', 'UserController@regis')->name('user.regis');
 Route::post('store_reg', 'UserController@store_regis')->name('user.store_regis');
 
+Route::get('/reload-captcha', [App\Http\Controllers\Auth\RegisterController::class, 'reloadCaptcha']);
+
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
     Route::get('myprofile', 'UserController@myProfile')->name('user.myProfile');
@@ -63,16 +67,22 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('edukasi', 'EdukasiController');
     Route::resource('produk', 'ProdukController');
     Route::get('produktersedia', 'ProdukController@produktersedia')->name('produk.produktersedia');
+    Route::get('/share', [ShareSocialController::class,'shareSocial']);
     Route::resource('tambak', 'TambakController');
     Route::resource('jadwal', 'JadwalController');
     Route::resource('event', 'EventController');
+    Route::resource('history', 'HistoryController');
     Route::resource('aktivitas', 'AktivitasController');
+    Route::post('aktivitas/export-pdf', [AktivitasController::class, 'pdf']);
     Route::resource('pembesaran', 'PembesaranController');
     Route::resource('panen', 'PanenController');
     Route::resource('kebutuhan-pengepul', 'KebutuhanPengepulController');
     Route::get('detailkebutuhanpengepul', 'KebutuhanPengepulController@detailkebutuhanpengepul')->name('kebutuhanpengepul.detailkebutuhanpengepul');
     Route::resource('kebutuhan-pembudidaya', 'KebutuhanPembudidayaController');
     Route::get('detailkebutuhanpembudidaya', 'KebutuhanPembudidayaController@detailkebutuhanpembudidaya')->name('kebutuhanpembudidaya.detailkebutuhanpembudidaya');
+
+
+    // Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
     
     // Route::post('/kirim', [FrontController::class, 'kirim']);
     Route::get('jadwal/update-pembesaran/{id}', 'JadwalController@updatePaksi');

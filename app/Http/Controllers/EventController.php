@@ -62,6 +62,7 @@ class EventController extends Controller
             'deskripsi' => 'required',
             'produk_dijual' => 'required',
             'berat' => 'required',
+            'harga' => 'required',
             'gambar_event' => 'mimes:png,jpg,jpeg',
         ]);
         $data = $request->all();
@@ -122,6 +123,7 @@ class EventController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'produk_dijual' => $request->produk_dijual,
                 'berat' => $request->berat,
+                'harga' => $request->harga,
             ]);
             return redirect()->route('event.index')->with(['success' => 'Data Berhasil Diedit']);
             
@@ -137,6 +139,7 @@ class EventController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'produk_dijual' => $request->produk_dijual,
                 'berat' => $request->berat,
+                'harga' => $request->harga,
                 'gambar_event' => $request->file('gambar_event')->store('event'),
             ]);
             return redirect()->route('event.index')->with(['success' => 'Data Berhasil Diedit']);

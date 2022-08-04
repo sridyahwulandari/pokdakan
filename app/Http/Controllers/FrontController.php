@@ -9,6 +9,7 @@ use App\Models\Berita;
 use App\Models\Event;
 use App\Models\Jadwal;
 use App\Models\Produk;
+use App\Models\Tambak;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -22,8 +23,10 @@ class FrontController extends Controller
     public function beranda()
     {
         $user = User::all();
+        $event = Event::all();
         return view('frontend.beranda.index', [
-            'user' => $user
+            'user' => $user,
+            'event' => $event,
         ]);
     }
 
@@ -131,8 +134,10 @@ class FrontController extends Controller
     public function jadwalFront()
     {
         $jadwal = Jadwal::all();
+        $tambak = Tambak::all();
         return view('frontend.jadwal-front.index', [
             'jadwal' => $jadwal,
+            'tambak' => $tambak,
         ]);
     }
 

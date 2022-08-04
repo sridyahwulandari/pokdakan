@@ -200,6 +200,7 @@
 				} );
 			}
 		});
+		
 
 		// Add Row
 		$('#add-row').DataTable({

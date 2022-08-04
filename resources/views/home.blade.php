@@ -27,8 +27,27 @@
 						</div>
 						<div class="col col-stats ml-3 ml-sm-0">
 							<div class="numbers">
-								<p class="card-category">Budidaya</p>
-								<h4 class="card-title">10</h4>
+								<p class="card-category">Pengguna</p>
+								<h4 class="card-title">{{$usertotal}}</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<div class="card card-stats card-round">
+				<div class="card-body">
+					<div class="row align-items-center">
+						<div class="col-icon">
+							<div class="icon-big text-center icon-danger bubble-shadow-small">
+								<i class="far fa-newspaper"></i>
+							</div>
+						</div>
+						<div class="col col-stats ml-3 ml-sm-0">
+							<div class="numbers">
+								<p class="card-category">Produk Supplier</p>
+								<h4 class="card-title">{{$produktotal}}</h4>
 							</div>
 						</div>
 					</div>
@@ -41,13 +60,13 @@
 					<div class="row align-items-center">
 						<div class="col-icon">
 							<div class="icon-big text-center icon-info bubble-shadow-small">
-								<i class="far fa-newspaper"></i>
+								<i class="fas fa-calendar-alt"></i>
 							</div>
 						</div>
 						<div class="col col-stats ml-3 ml-sm-0">
 							<div class="numbers">
-								<p class="card-category">Produk Tersedia</p>
-								<h4 class="card-title">{{$produk}}</h4>
+								<p class="card-category">Jadwal</p>
+								<h4 class="card-title">{{$jadwaltotal}}</h4>
 							</div>
 						</div>
 					</div>
@@ -60,13 +79,13 @@
 					<div class="row align-items-center">
 						<div class="col-icon">
 							<div class="icon-big text-center icon-success bubble-shadow-small">
-								<i class="fas fa-tags"></i>
+								<i class="fas fa-chess-board"></i>
 							</div>
 						</div>
 						<div class="col col-stats ml-3 ml-sm-0">
 							<div class="numbers">
-								<p class="card-category">Produk Tersedia</p>
-								<h4 class="card-title">80</h4>
+								<p class="card-category">Tambak</p>
+								<h4 class="card-title">{{$tambaktotal}}</h4>
 							</div>
 						</div>
 					</div>
@@ -78,15 +97,54 @@
 				<div class="card-body">
 					<div class="row align-items-center">
 						<div class="col-icon">
-							<div class="icon-big text-center icon-secondary bubble-shadow-small">
-								<i class="fas fa-file-image"></i>
+							<div class="icon-big text-center icon-warning bubble-shadow-small">
+								<i class="far fa-calendar-alt"></i>
+							</div>
+						</div>
+						<div class="col col-stats ml-3 ml-sm-0">
+							<div class="numbers">
+								<p class="card-category">Event</p>
+								<h4 class="card-title">{{$eventtotal}}</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<div class="card card-stats card-round">
+				<div class="card-body">
+					<div class="row align-items-center">
+						<div class="col-icon">
+							<div class="icon-big text-center icon-dark bubble-shadow-small">
+								<i class="far fa-check-square"></i>
 
 							</div>
 						</div>
 						<div class="col col-stats ml-3 ml-sm-0">
 							<div class="numbers">
-								<p class="card-category">Blog</p>
-								<h4 class="card-title">90</h4>
+								<p class="card-category">Kebutuhan Pembudidaya</p>
+								<h4 class="card-title">{{ $kebutuhanpembudidayatotal}}</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<div class="card card-stats card-round">
+				<div class="card-body">
+					<div class="row align-items-center">
+						<div class="col-icon">
+							<div class="icon-big text-center icon-info bubble-shadow-small">
+								<i class="far fa-check-square"></i>
+
+							</div>
+						</div>
+						<div class="col col-stats ml-3 ml-sm-0">
+							<div class="numbers">
+								<p class="card-category">Kebutuhan Pengepul</p>
+								<h4 class="card-title">{{ $kebutuhanpengepultotal}}</h4>
 							</div>
 						</div>
 					</div>

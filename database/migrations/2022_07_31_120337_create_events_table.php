@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('deskripsi');
             $table->string('produk_dijual');
             $table->integer('berat');
+            $table->string('harga');
             $table->string('gambar_event');
             $table->timestamps();
         });

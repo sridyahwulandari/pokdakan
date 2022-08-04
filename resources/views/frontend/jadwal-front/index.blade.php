@@ -5,150 +5,31 @@
 <br>
 <br>
 <br>
-<!-- ======= Counts Section ======= -->
-<section id="counts" class="counts">
-    <div class="container" data-aos="fade-up">
-  
-      <div class="row gy-4">
-  
-        <div class="col-lg-4 col-md-6" style="color: rgb(255, 0, 0)">
-          <div class="count-box">
-            <i class="bi bi-calendar3"></i>
-            <div>
-                <h3><b>Tebar Bibit</b></h3>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6" style="color: rgb(255, 208, 0)">
-          <div class="count-box">
-            <i class="bi bi-calendar3"></i>
-            <div>
-                <h3><b>Pembesaran</b></h3>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6" style="color: rgb(0, 226, 0)">
-          <div class="count-box">
-            <i class="bi bi-calendar3"></i>
-            <div>
-              <h3><b>Panen</b></h3>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-  
-    </div>
-  </section><!-- End Counts Section -->
-<br>
-<br>
 
-      <div class="container">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
 
-         <div id='calendar'></div>
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <p>Jadwal Pembudidaya</p>
+        </header>
+
+        <div class="row gy-4">
+          @foreach ($jadwal as $key => $row)
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box blue">
+              <img src="{{ asset('uploads/' . $row->tambak->gambar_tambak) }}" class="img-fluid" alt="">
+              <h3>{{ $row->tambak->nama_tambak }}</h3>
+              <p>Tanggal Bibit : {{date('d/m/Y',strtotime($row->tgl_bibit)) }}</p>
+              <p>Tanggal Pakan : {{date('d/m/Y',strtotime($row->tgl_pakan)) }}</p>
+              <p>Prediksi Panen : {{date('d/m/Y',strtotime($row->tgl_panen)) }}</p>
+            </div>
+          </div>
+          @endforeach
+        </div>
+
       </div>
-      <script>
-         $(document).ready(function () {
-            
-         var SITEURL = "{{ url('/') }}";
-           
-         $.ajaxSetup({
-             headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-             }
-         });
-           
-         var calendar = $('#calendar').fullCalendar({
-                             editable: true,
-                             events: SITEURL + "/fullcalender",
-                             displayEventTime: false,
-                             editable: true,
-                             eventRender: function (event, element, view) {
-                                 if (event.allDay === 'true') {
-                                         event.allDay = true;
-                                 } else {
-                                         event.allDay = false;
-                                 }
-                             },
-                             selectable: true,
-                             selectHelper: true,
-                            //  select: function (start, end, allDay) {
-                            //      var title = prompt('Event Title:');
-                            //      if (title) {
-                            //          var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                            //          var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
-                            //          $.ajax({
-                            //              url: SITEURL + "/fullcalenderAjax",
-                            //              data: {
-                            //                  title: title,
-                            //                  start: start,
-                            //                  end: end,
-                            //                  type: 'add'
-                            //              },
-                            //              type: "POST",
-                            //              success: function (data) {
-                            //                  displayMessage("Event Created Successfully");
-           
-                            //                  calendar.fullCalendar('renderEvent',
-                            //                      {
-                            //                          id: data.id,
-                            //                          title: title,
-                            //                          start: start,
-                            //                          end: end,
-                            //                          allDay: allDay
-                            //                      },true);
-           
-                            //                  calendar.fullCalendar('unselect');
-                            //              }
-                            //          });
-                            //      }
-                            //  },
-                             eventDrop: function (event, delta) {
-                                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                                 var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-           
-                                 $.ajax({
-                                     url: SITEURL + '/fullcalenderAjax',
-                                     data: {
-                                         title: event.title,
-                                         start: start,
-                                         end: end,
-                                         id: event.id,
-                                         type: 'update'
-                                     },
-                                     type: "POST",
-                                     success: function (response) {
-                                         displayMessage("Event Updated Successfully");
-                                     }
-                                 });
-                             },
-                             eventClick: function (event) {
-                                 var deleteMsg = confirm("Do you really want to delete?");
-                                 if (deleteMsg) {
-                                     $.ajax({
-                                         type: "POST",
-                                         url: SITEURL + '/fullcalenderAjax',
-                                         data: {
-                                                 id: event.id,
-                                                 type: 'delete'
-                                         },
-                                         success: function (response) {
-                                             calendar.fullCalendar('removeEvents', event.id);
-                                             displayMessage("Event Deleted Successfully");
-                                         }
-                                     });
-                                 }
-                             }
-          
-                         });
-          
-         });
-          
-         function displayMessage(message) {
-             toastr.success(message, 'Event');
-         } 
-           
-      </script>
+
+    </section><!-- End Services Section -->
 @endsection

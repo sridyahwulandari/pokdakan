@@ -15,7 +15,9 @@
 				<div class="card-header">
 					<div class="card-head-row">
 						<div class="card-title">Data Event</div>
+                        @can('event-create')
                         <a href="{{ route('event.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Produk</a>
+                        @endcan
 					</div>
 				</div>
 				<div class="card-body">
@@ -36,8 +38,11 @@
                                 <th>Lokasi</th>
                                 <th>Deskripsi</th>
                                 <th>Produk Dijual</th>
+                                <th>Harga</th>
                                 <th>Gambar</th>
+                                @can('event-create')
                                 <th>Action</th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +55,9 @@
                                 <td>{{ $row->lokasi }}</td>
                                 <td>{!! $row->deskripsi !!}</td>
                                 <td>{{ $row->produk_dijual }}</td>
+                                <td>Rp. {{ number_format($row->harga) }}</td>
                                 <td><img src=" {{ asset('uploads/' . $row->gambar_event) }} " width="100"></td>
+                                @can('event-create')
                                 <td>
                                     <div class="form-button-action">
                                         <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
@@ -65,6 +72,7 @@
                                     </form>
                                     </div>
                                 </td>
+                                @endcan
                             </tr>
                             @empty
                             <tr>

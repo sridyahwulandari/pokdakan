@@ -52,7 +52,7 @@
                                 <td>{{ $row->merk }}</td>
                                 <td>{{ $row->kondisi }}</td>
                                 <td>{{ $row->berat }}</td>
-                                <td>{{ $row->harga }}</td>
+                                <td>Rp. {{ number_format($row->harga) }}</td>
                                 <td>{{ $row->stok }}</td>
                                 <td><img src=" {{ asset('uploads/' . $row->gambar_produk_supplier) }} " width="100"></td>
                                 <td>

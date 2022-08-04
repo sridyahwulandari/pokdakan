@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class ProdukController extends Controller
 {
     /**
@@ -33,12 +34,43 @@ class ProdukController extends Controller
         return view('produk.index', compact('produk'));
     }
 
-    public function produktersedia()
+    // public function produktersedia()
+    // {
+    //     $produk = Produk::all();
+    //     $user = auth()->user();
+    //     return view('produk.produktersedia', compact('produk'));
+    // }
+
+    public function produktersedia(Request $request)
     {
-        $produk = Produk::all();
-        $user = auth()->user();
-        return view('produk.produktersedia', compact('produk'));
+        if($request->more_view){
+        $produktotal = Produk::count();
+        $usertotal = User::count();;
+        // dd($produktotal);
+        $totalP = $request->more_view * 3;
+        $produk = Produk::paginate($totalP);
+        return view('produk.produktersedia', [
+            'produk' => $produk,
+            'produktotal' => $produktotal,
+            'usertotal' => $usertotal,
+            'total_view' => ($request->more_view) ? $totalP : '9',
+        ]);
+        }else{
+            $produktotal = Produk::count();
+        $usertotal = User::count();
+// dd($produktotal);
+        $produk = Produk::paginate(3);
+        return view('produk.produktersedia', [
+            'produk' => $produk,
+            'produktotal' => $produktotal,
+            'usertotal' => $usertotal,
+            'total_view' => ($request->more_view) ? $request->more_view : '9',
+        ]);
+        }
+        // return view('home', $data);
     }
+
+
 
 
     /**
@@ -184,4 +216,5 @@ class ProdukController extends Controller
 
         return redirect()->route('produk.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
+
 }

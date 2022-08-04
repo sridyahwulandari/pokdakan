@@ -15,7 +15,9 @@
 				<div class="card-header">
 					<div class="card-head-row">
 						<div class="card-title">Data Kebutuhan Pembudidaya</div>
+                        @can('kebutuhan-pembudidaya-create')
                         <a href="{{ route('kebutuhan-pembudidaya.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fa fa-plus"></i>Tambah Produk</a>
+                        @endcan
 					</div>
 				</div>
 				<div class="card-body">

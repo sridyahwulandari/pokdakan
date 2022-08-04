@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
 
         /*
@@ -233,6 +236,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
 
     ],

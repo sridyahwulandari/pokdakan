@@ -62,7 +62,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
-								<p>Manajement</p>
+								<p>Manajemen</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="forms">
@@ -248,20 +248,37 @@
 						@endcan
 						@can('event-list')
 						<li class="nav-item">
-							<a href="{{ route('event.index') }}">
-								<i class="fas fa-calendar-alt"></i>
-								<p>Event</p>
+							<a data-toggle="collapse" href="#charts">
+								<i class="fas fa-pen-square"></i>
+								<p>Data Event</p>
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="charts">
+								<ul class="nav nav-collapse">
+									<li class="nav-item">
+										<a href="{{ route('event.index') }}">
+											<i class="fas fa-calendar-alt"></i>
+											<p>Event</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{ route('history.index') }}">
+											<i class="fas fa-calendar-alt"></i>
+											<p>History</p>
+										</a>
+									</li>
+								</ul>
+							</div>
 						</li>
 						@endcan
 						@can('kebutuhan-pengepul')
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
+							<a data-toggle="collapse" href="#dashboard">
 								<i class="fas fa-user"></i>
 								<p>Pengepul</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="charts">
+							<div class="collapse" id="dashboard">
 								<ul class="nav nav-collapse">
 									@can('kebutuhan-pengepul-list')
 									<li>

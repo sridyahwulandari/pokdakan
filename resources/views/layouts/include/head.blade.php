@@ -103,4 +103,27 @@
          .center  { text-align: center;}
          .justify { text-align: justify;}
       </style>
+
+<style type="text/css">
+   li{
+       list-style: none;
+       background: #e2e2e2;
+       margin-left: 5px;
+       text-align: center;
+       border-radius:5px;
+   }
+   li span{
+       font-size: 20px;
+   }
+   ul li{
+       display: inline-block;
+       padding: 10px 10px 5px;
+   }
+   #social-links{
+       float: left;
+   }
+   a.social-button {
+       color: #000;
+   }
+</style>
 </head>

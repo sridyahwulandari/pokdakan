@@ -8,7 +8,7 @@
 		</div>
 	</div>
 </div>
-<div class="page-inner mt--5">
+{{-- <div class="page-inner mt--5">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card full-height">
@@ -78,5 +78,36 @@
 			</div>
 		</div>
 	</div>
+</div> --}}
+
+<!-- Customized Card -->
+<div class="row ">
+    @foreach ($produk as $key => $row)
+    <div class="col-md-4 mt-3">
+        <div class="card card-post card-round">
+            <img class="card-img-top" src="{{ asset('uploads/' . $row->gambar_produk_supplier) }} " alt="Card image cap">
+            <div class="card-body">
+                <div class="separator-solid"></div>
+                <p class="card-category text-info mb-1">{{$row->supplier->bahan_baku}}</a></p>
+                <h3 class="card-title">
+                    <a href="#">
+                        {{$row->nama_produk}}
+                    </a>
+                </h3>
+                <p class="card-text">{!!$row->deskripsi!!}</p>
+                <a href="{{ route('produk.show', $row->id)}}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+            </div>
+        </div>
+    </div>
+    @endforeach
 </div>
+
+<div class="text-center mt-4">
+          <form action="/produktersedia" method="get">
+            @csrf
+            <input type="hidden" name="more_view" value="{{($total_view)}}" class="form-control">
+            <button class="btn btn-primary" type="submit">{{$total_view}} More Views</button>
+          </form>
+        </div>
+
 @endsection

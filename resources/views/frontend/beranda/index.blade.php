@@ -1,10 +1,37 @@
 @extends('layouts.front')
 
 @section('content')
+
+
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero d-flex align-items-center">
 
     <div class="container">
+      <marquee>
+        <section id="counts" class="counts">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="row gy-4">
+              @foreach ($event as $key => $row)
+              <div class="col-lg-3 col-md-6">
+                <div class="count-box">
+                  <i class="bi bi-calendar3"></i>
+                  <div>
+                    <p>{{date ('d/m/Y',strtotime($row->tgl_mulai))}} s/d {{date ('d/m/Y',strtotime($row->tgl_selesai))}}</p>
+                    <p>{{ $row->judul}}</p>
+                    <p>Stok Tersedia : {{ $row->produk_dijual}} Kg</p>
+                  </div>
+                </div>
+              </div>
+    
+              
+              @endforeach
+            </div>
+    
+          </div>
+        </section>
+      </marquee>
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">Produktivitas Budidaya Ikan</h1>
@@ -25,6 +52,36 @@
     </div>
 
   </section><!-- End Hero -->
+  {{-- <header class="section-header">
+    <p>Event Berjalan</p>
+  </header>
+  <marquee>
+
+     <!-- ======= Counts Section ======= -->
+     <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+          @foreach ($event as $key => $row)
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="bi bi-calendar3"></i>
+              <div>
+                <p>{{date ('d/m/Y',strtotime($row->tgl_mulai))}} s/d {{date ('d/m/Y',strtotime($row->tgl_selesai))}}</p>
+                <p>{{ $row->judul}}</p>
+              </div>
+            </div>
+          </div>
+
+          
+          @endforeach
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+  </marquee> --}}
+
+
     <!-- ======= Values Section ======= -->
     <section id="values" class="values">
 
@@ -35,7 +92,7 @@
           </header>
   
           <div class="row">
-  
+            
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
               <div class="box">
                 <img src="{{ asset('web/img/2.jpg')}}" class="img-fluid" alt="">
@@ -51,7 +108,7 @@
                 </div>
               </div>
             </div>
-  
+           
             <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
               <div class="box">
                 <img src="{{ asset('web/img/3.jpg')}}" class="img-fluid" alt="">

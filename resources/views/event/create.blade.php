@@ -62,6 +62,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="text" name="harga" class="form-control" id="text" placeholder="Enter Lokasi">
+                    </div>
+
+                    <div class="form-group">
                         <label for="gambar_event">Gambar Event</label>
                         <input type="file" name="gambar_event" class="form-control">
                     </div>

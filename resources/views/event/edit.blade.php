@@ -73,6 +73,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="harga">Harga</label>
+                    <input type="text" name="harga" class="form-control" id="text" 
+                    value="{{ $event->harga }}">
+                </div>
+
+                <div class="form-group">
                     <label for="gambar_event">Gambar event</label>
                     <input type="file" name="gambar_event" class="form-control">
                     <br>

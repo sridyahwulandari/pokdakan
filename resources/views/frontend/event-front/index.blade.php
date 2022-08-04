@@ -14,9 +14,9 @@
       <div class="text-center">
         <form action="/event-front" method="get">
           <select name="tgl_selesai" class="form-control" id="">
-            <option value="">--Pilih Tanggal Yang Sesuai</option>
+            <option value="">--Pilih Tanggal Yang</option>
             @foreach ($tgl_selesai as $tgl_s)
-            <option value="{{$tgl_s->tgl_selesai}}">{{$tgl_s->tgl_selesai}}</option>
+            <option value="{{$tgl_s->tgl_selesai}}">{{date ('d/m/Y',strtotime($tgl_s->tgl_selesai))}}</option>
             @endforeach
           </select>
           <br>
@@ -31,7 +31,7 @@
             <span class="post-date">{{ $row->created_at }}</span>
             <h3 class="post-title">{{ $row->judul }}</h3>
             <p>{!! $row->deskripsi !!}</p>
-            <p>{{ $row->tgl_mulai }} s/d {{ $row->tgl_selesai }}</p>
+            <p>{{date ('d/m/Y',strtotime($row->tgl_mulai))}} s/d {{date ('d/m/Y',strtotime($row->tgl_selesai))}}</p>
             {{-- <a href="{{ route('produk-front-detail', $row->slug)}}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> --}}
           </div>
         </div>
