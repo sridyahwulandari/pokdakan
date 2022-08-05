@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Tambak;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -27,6 +29,8 @@ class EventController extends Controller
         $event = Event::where('user_id',auth()->user()->id)->get();
         $user = auth()->user();
         return view('event.index', compact('event'));
+        // $mytime = Carbon::now()->format('Y-m-d');
+        // echo $mytime;
     }
 
     public function produk()
@@ -63,6 +67,7 @@ class EventController extends Controller
             'produk_dijual' => 'required',
             'berat' => 'required',
             'harga' => 'required',
+            'status' => 'required',
             'gambar_event' => 'mimes:png,jpg,jpeg',
         ]);
         $data = $request->all();
@@ -96,10 +101,12 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $user = User::all();
+        $tambak = Tambak::all();
 
         return view('event.edit', [
             'event' => $event,
             'user' => $user,
+            'tambak' => $tambak,
         ]);
     }
 
@@ -124,6 +131,7 @@ class EventController extends Controller
                 'produk_dijual' => $request->produk_dijual,
                 'berat' => $request->berat,
                 'harga' => $request->harga,
+                'status' => $request->status,
             ]);
             return redirect()->route('event.index')->with(['success' => 'Data Berhasil Diedit']);
             
@@ -140,6 +148,7 @@ class EventController extends Controller
                 'produk_dijual' => $request->produk_dijual,
                 'berat' => $request->berat,
                 'harga' => $request->harga,
+                'status' => $request->status,
                 'gambar_event' => $request->file('gambar_event')->store('event'),
             ]);
             return redirect()->route('event.index')->with(['success' => 'Data Berhasil Diedit']);

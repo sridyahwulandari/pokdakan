@@ -40,6 +40,7 @@
                                 <th>Produk Dijual</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
+                                <th>Aksi</th>
                                 @can('event-create')
                                 <th>Action</th>
                                 @endcan
@@ -57,6 +58,13 @@
                                 <td>{{ $row->produk_dijual }}</td>
                                 <td>Rp. {{ number_format($row->harga) }}</td>
                                 <td><img src=" {{ asset('uploads/' . $row->gambar_event) }} " width="100"></td>
+                                <td>
+                                    @if ($row->status == '1')
+                                        <button class="btn btn-success btn-round">Aktif</button>
+                                        @else
+                                        <button class="btn btn-darge btn-round">Tidak Aktif</button>
+                                        @endif
+                                </td>
                                 @can('event-create')
                                 <td>
                                     <div class="form-button-action">

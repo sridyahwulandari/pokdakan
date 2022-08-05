@@ -165,7 +165,6 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
-        Mews\Captcha\CaptchaServiceProvider::class,
 
 
         /*
@@ -238,7 +237,6 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
 
     ],

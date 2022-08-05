@@ -11,6 +11,7 @@ use App\Models\Jadwal;
 use App\Models\Produk;
 use App\Models\Tambak;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
@@ -120,9 +121,19 @@ class FrontController extends Controller
                 'tgl_selesai' => $tgl_selesei,
             ]);
         }else{
-            $event = Event::all();
+            $data = Event::all();
+            $now_date = Carbon::now()->format('Y-m-d');
+            foreach ($data as $key => $value) {
+                if ($now_date > $value->tgl_selesai) {
+                    $item = Event::find($value->id);
+                    $item->update([
+                        'status' => 0,
+                    ]);
+                } 
+                
+            }
+            $event = Event::where('status', 1)->get();
             $tgl_selesei = DB::table('events')->select('events.tgl_selesai')->get();
-            // dd($coba);
             return view('frontend.event-front.index', [
                 'event' => $event,
                 'tgl_selesai' => $tgl_selesei,

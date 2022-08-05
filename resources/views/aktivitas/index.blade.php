@@ -21,18 +21,35 @@
                         <p>{{ \Session::get('success') }}</p>
                     </div>
                      @endif
-                     
-                     <div class="text-center">
-                        <form action="/aktivitas/export-pdf" method="post">
-                            @csrf
-                        <input type="date" name="mulai" id="" class="form-control">
-                        <input type="date" name="akhir" id="" class="form-control">
-                        <br>
-                        <button class="btn btn-primary" type="submit">Cari berdasarkan tanggal</button>
-                        {{-- <a href=""><button class="btn btn-success">Export</button></a> --}}
-                    </form>
+                     <div class="row">
+                        <div class="col-md-8 form-group">
+                            <form action="/aktivitas/export-pdf" method="post">
+                                @csrf
+                            <input type="date" name="mulai" id="" class="col-md-4 form-control">
+                            <br>
+                            <input type="date" name="akhir" id="" class="col-md-4 form-control">
+                            <br>
+                            <button class="btn btn-primary" type="submit">Export</button>
+                            {{-- <a href=""><button class="btn btn-success">Export</button></a> --}}
+                            </form>
+                        </div>
                     </div>
-                     </div>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <form action="aktivitas/export-pdf-aksi" method="post">
+                                @csrf
+                            <label for="defaultSelect">Berdasarkan Status</label>
+                            <select name="aksi" class="form-control form-control" id="defaultSelect">
+                                <option value="tebar_bibit">Tebar Bibit</option>
+                                <option value="pembesaaran">Pembesaran</option>
+                                <option value="panen">Panen</option>
+                            </select>
+                            <button class="btn btn-primary" type="submit">Export</button>
+                        </form>
+                        </div>
+                    </div>
+                    
                     <div class="table-responsive">
                         <table id="add-row" class="display table table-striped table-hover" >
                             <thead>

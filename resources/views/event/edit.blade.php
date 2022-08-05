@@ -86,6 +86,18 @@
                     <img src=" {{ asset('uploads/' . $event->gambar_event) }} " width="100">
                 </div>
 
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" class="form-control">
+                        <option value="1" {{ $tambak->status == '1' ? 'selected' : ''}}>
+                            Aktif
+                        </option>
+                        <option value="0"{{ $tambak->status == '0' ? 'selected' : ''}}>
+                            Tidak Aktif
+                        </option>
+                    </select>
+                </div>
+
 
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" type="submit">Save</button>

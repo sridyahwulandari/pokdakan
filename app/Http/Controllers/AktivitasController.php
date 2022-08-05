@@ -18,7 +18,7 @@ class AktivitasController extends Controller
 
         if($request->tgl_panen){
             // dd($request->tgl_panen);
-            $jadwal =  DB::table('jadwals')->where('tgl_panen',$request->tgl_panen)->latest()->get();
+            $jadwal =  DB::table('jadwals')->where('tgl_panen',$request->tgl_panen)->orderBy('aksi','asc')->get();
             $tgl_panen = DB::table('jadwals')->select('jadwals.tgl_panen')->get();
             // dd($jadwal);
             return view('aktivitas.index', [
@@ -26,7 +26,7 @@ class AktivitasController extends Controller
                 'tgl_panen' => $tgl_panen,
             ]);
         }else{
-            $jadwal = Jadwal::all();
+            $jadwal = Jadwal::orderBy('aksi','asc')->get();
             $tgl_panen = DB::table('jadwals')->select('jadwals.tgl_panen')->get();
             // dd($coba);
             return view('aktivitas.index', [
@@ -43,7 +43,21 @@ class AktivitasController extends Controller
     {
         $jadwal = Jadwal::where('created_at', '>=', $request->mulai)
         ->where('created_at', '<=', $request->akhir)
+        ->orderBy('aksi','asc')
         ->get();
+        $data = [
+            'jadwal' => $jadwal
+        ];
+        // dd($aktivity);
+        return view('aktivitas.pdf',$data);
+
+    }
+    public function pdfAksi(Request $request)
+    {
+        $jadwal = Jadwal::where('aksi', $request->aksi)
+        ->orderBy('aksi','asc')
+        ->get();
+        // dd($jadwal);    
         $data = [
             'jadwal' => $jadwal
         ];

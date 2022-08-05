@@ -15,7 +15,39 @@
           <li><a class="{{ Request::is('jadwal-front*') ? 'active font-bold' : ''}}" href="/jadwal-front">Jadwal</a></li>
           <li><a class="{{ Request::is('berita-front*') ? 'active font-bold' : ''}}" href="/berita-front">Berita</a></li>
           <li><a class="{{ Request::is('formemail*') ? 'active font-bold' : ''}}" href="formemail">Hubungi Kami</a></li>
-          <li><a class="getstarted scrollto" href="{{ route('login')}}">Login</a></li>
+          {{-- <li><a class="getstarted scrollto" href="{{ route('login')}}">Login</a></li> --}}
+          @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            {{-- @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif --}}
+                        @else
+                        {{-- <li><a class="{{ Request::is('booking*') ? 'active font-bold' : ''}}" href="/booking">Booking Wisata</a></li> --}}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

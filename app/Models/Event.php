@@ -12,7 +12,7 @@ class Event extends Model
     protected $table = 'events';
 
     protected $fillable = [
-        'user_id', 'judul', 'tgl_mulai', 'tgl_selesai', 'lokasi', 'deskripsi', 'produk_dijual', 'berat', 'harga', 'gambar_event'
+        'user_id', 'judul', 'tgl_mulai', 'tgl_selesai', 'lokasi', 'deskripsi', 'produk_dijual', 'berat', 'harga', 'gambar_event', 'status',
     ];
 
 
@@ -22,5 +22,11 @@ class Event extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    // public function tambak()
+    // {
+    //     return $this->belongsTo(Tambak::class, 'tambak_id', 'id');
+    // }
+
 
 }

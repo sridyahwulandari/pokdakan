@@ -49,7 +49,7 @@ Route::post('/kirim', [FrontController::class, 'kirim']);
 Route::get('regis', 'UserController@regis')->name('user.regis');
 Route::post('store_reg', 'UserController@store_regis')->name('user.store_regis');
 
-Route::get('/reload-captcha', [App\Http\Controllers\Auth\RegisterController::class, 'reloadCaptcha']);
+Route::get('/reload-captcha', [App\Http\Controllers\Auth\UserController::class, 'reloadCaptcha']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('history', 'HistoryController');
     Route::resource('aktivitas', 'AktivitasController');
     Route::post('aktivitas/export-pdf', [AktivitasController::class, 'pdf']);
+    Route::post('aktivitas/export-pdf-aksi', [AktivitasController::class, 'pdfAksi']);
     Route::resource('pembesaran', 'PembesaranController');
     Route::resource('panen', 'PanenController');
     Route::resource('kebutuhan-pengepul', 'KebutuhanPengepulController');
