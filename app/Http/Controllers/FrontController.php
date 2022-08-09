@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailSend;
 use App\Models\Berita;
 use App\Models\Event;
+use App\Models\Histori;
+use App\Models\History;
 use App\Models\Jadwal;
 use App\Models\Produk;
 use App\Models\Tambak;
@@ -67,37 +69,43 @@ class FrontController extends Controller
     {
         if($request->more_view){
             $produktotal = Produk::count();
-        $usertotal = User::count();
-        $jadwaltotal = Jadwal::count();
-        $beritatotal = Berita::count();
-        // dd($produktotal);
-        $totalP = $request->more_view * 3;
-        $produk = Produk::paginate($totalP);
-        return view('frontend.produk-front.index', [
-            'produk' => $produk,
-            'produktotal' => $produktotal,
-            'usertotal' => $usertotal,
-            'jadwaltotal' => $jadwaltotal,
-            'beritatotal' => $beritatotal,
-            'total_view' => ($request->more_view) ? $totalP : '9',
-        ]);
+            $usertotal = User::count();
+            $jadwaltotal = Jadwal::count();
+            $beritatotal = Berita::count();
+            $eventtotal = Event::count();
+            // dd($produktotal);
+            // $produk = Produk::where('kondisi',1)->get();
+            $totalP = $request->more_view * 3;
+            $produk = Produk::where('kondisi',1)->paginate($totalP);
+            return view('frontend.produk-front.index', [
+                'produk' => $produk,
+                'produktotal' => $produktotal,
+                'usertotal' => $usertotal,
+                'jadwaltotal' => $jadwaltotal,
+                'beritatotal' => $beritatotal,
+                'eventtotal' => $eventtotal,
+                'total_view' => ($request->more_view) ? $totalP : '9',
+            ]);
         }else{
             $produktotal = Produk::count();
-        $usertotal = User::count();
-        $jadwaltotal = Jadwal::count();
-        $beritatotal = Berita::count();
-// dd($produktotal);
-        $produk = Produk::paginate(3);
-        return view('frontend.produk-front.index', [
-            'produk' => $produk,
-            'produktotal' => $produktotal,
-            'usertotal' => $usertotal,
-            'jadwaltotal' => $jadwaltotal,
-            'beritatotal' => $beritatotal,
-            'total_view' => ($request->more_view) ? $request->more_view : '9',
-        ]);
-        }
-        // return view('home', $data);
+            $usertotal = User::count();
+            $jadwaltotal = Jadwal::count();
+            $beritatotal = Berita::count();
+            $eventtotal = Event::count();
+    // dd($produktotal);
+            // $produk = Produk::where('kondisi',1)->get();
+            $produk = Produk::where('kondisi',1)->paginate(3);
+            return view('frontend.produk-front.index', [
+                'produk' => $produk,
+                'produktotal' => $produktotal,
+                'usertotal' => $usertotal,
+                'jadwaltotal' => $jadwaltotal,
+                'beritatotal' => $beritatotal,
+                'eventtotal' => $eventtotal,
+                'total_view' => ($request->more_view) ? $request->more_view : '9',
+            ]);
+            }
+            // return view('home', $data);
     }
 
     public function produkFrontDetail($slug)
@@ -140,6 +148,17 @@ class FrontController extends Controller
             ]);
         }
 
+    }
+
+    public function eventFrontDetail($slug)
+    {
+        $event = Event::all();
+        $histori = Histori::all();
+        $event = Event::where('slug', $slug)->first();
+        return view('frontend.event-front-detail.index', [
+            'event' => $event,
+            'histori' => $histori,
+        ]);
     }
 
     public function jadwalFront()

@@ -5,7 +5,7 @@ Profile
 @endsection
 
 @section('content')
-<section class="content">
+{{-- <section class="content">
     <div class="">
         <div class="row">
             <div class="col-md-12 mt-3 mr-3">
@@ -31,5 +31,50 @@ Profile
             </div>
         </div>
     </div>
-</section>
+</section> --}}
+
+<div class="panel-header bg-primary-gradient">
+	<div class="page-inner py-5">
+		<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+		</div>
+	</div>
+</div>
+
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <img src="{{ asset('uploads/' . auth()->user()->foto) }}" alt="..." class="avatar-img rounded-circle">
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped mt-3">
+                        <tbody>
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td>{{ auth()->user()->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>{{ auth()->user()->email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Telepon</td>
+                                <td>:</td>
+                                <td>{{ auth()->user()->telepon }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td>{{ auth()->user()->alamat }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

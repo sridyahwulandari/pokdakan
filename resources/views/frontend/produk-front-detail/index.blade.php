@@ -42,7 +42,18 @@
                   {!! $produk->deskripsi !!}
                 </p>
               <h3>Daftar Harga {{ $produk->jenis_pakan }} Per Kilogram</h3>
-                <table class="col-md-8">
+
+              <p><b>Nama Supplier:</b> {{ $produk->users->name }}</p>
+              <p><b>Kategori:</b> {{ $produk->supplier->bahan_baku }}</p>
+              <p><b>Jenis Ikan:</b> {{ $produk->jenis_pakan }}</p>
+              <p><b>Harga:</b> Rp. {{ number_format ($produk->harga) }}</p>
+              <p class="mb-0"><b>Stok:</b> {{ $produk->stok }}</p>
+              <p><b>Kondisi:</b> @if ($produk->kondisi == '1')
+                <button class="btn btn-success btn-round">Tersedia</button>
+                @else
+                <button class="btn btn-darge btn-round">Habis</button>
+                @endif</p>
+                {{-- <table class="col-md-8">
                   <tr>
                       <th>Author</th>
                       <th>Kategori</th>
@@ -57,7 +68,7 @@
                       <td align="center">Rp. {{ $produk->harga }}/Kg</td>
                       <td align="center">{{ $produk->stok }}/Kg</td>
                   </tr>
-                </table>
+                </table> --}}
                     
             </article><!-- End blog entry -->
             {{-- @endforeach --}}
@@ -65,16 +76,34 @@
         <div class="col-lg-4">
           <div class="sidebar">
 
-            <h3 class="sidebar-title">Supplier</h3>
+            <h3 class="sidebar-title">Detail Supplier</h3>
             
             <div class="sidebar-item recent-posts">
               <div class="post-item clearfix">
                 <img src="{{ asset('uploads/'. $produk->users->foto)}}" alt="">
               </div> 
-              <p>{{ $produk->users->name }}</p>
-                <p>{{ $produk->users->alamat }}</p>
-                <p>{{ $produk->users->telepon }}</p>
-                <a href="https://api.whatsapp.com/send?phone={{ $produk->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('web/img/chat.png')}}"></a>
+              <div class="col-lg-12">
+                <table class="table table-striped mt-3">
+                    <tbody>
+                        <tr>
+                            <td>Nama Supplier</td>
+                            <td>:</td>
+                            <td>{{ $produk->users->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>No Telepon / Wa</td>
+                            <td>:</td>
+                            <td>{{ $produk->users->telepon }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>{{ $produk->users->alamat }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+              <a href="https://api.whatsapp.com/send?phone={{ $produk->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('img/hubungi-kami.png')}}"></a>
                 <br>
             </div><!-- End sidebar recent posts-->
 	

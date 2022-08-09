@@ -13,7 +13,7 @@
 
 	  <div class="row gy-4">
 
-		<div class="col-lg-6">
+		<div class="col-lg-12">
 
 		  <div class="row gy-4">
 			<div class="col-md-6">
@@ -51,7 +51,7 @@
 
 		</div>
 
-		<div class="col-lg-6">
+		{{-- <div class="col-lg-6">
 		  <form method="post" action="/kirim">
 			@csrf
 			<div class="row gy-4">
@@ -77,7 +77,7 @@
 			</div>
 		  </form>
 
-		</div>
+		</div> --}}
 
 	  </div>
 

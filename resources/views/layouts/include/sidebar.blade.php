@@ -246,7 +246,7 @@
 							</div>
 						</li>
 						@endcan
-						@can('event-list')
+						@can('event')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#charts">
 								<i class="fas fa-pen-square"></i>
@@ -255,6 +255,15 @@
 							</a>
 							<div class="collapse" id="charts">
 								<ul class="nav nav-collapse">
+									@can('listevent')
+									<li class="nav-item">
+										<a href="{{ route('event.listevent') }}">
+											<i class="fas fa-calendar-alt"></i>
+											<p>Event</p>
+										</a>
+									</li>
+									@endcan
+									@can('event-list')
 									<li class="nav-item">
 										<a href="{{ route('event.index') }}">
 											<i class="fas fa-calendar-alt"></i>
@@ -262,11 +271,12 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="{{ route('history.index') }}">
+										<a href="{{ route('histori.index') }}">
 											<i class="fas fa-calendar-alt"></i>
 											<p>History</p>
 										</a>
 									</li>
+									@endcan
 								</ul>
 							</div>
 						</li>

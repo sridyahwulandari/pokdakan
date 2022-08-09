@@ -21,38 +21,39 @@
 				<div class="card-body">
                 <form method="post" action="{{ route('tambak.store') }}" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 form-group">
                         <label for="nama_tambak">Nama Tambak</label>
                         <input type="text" name="nama_tambak" class="form-control" id="text" placeholder="Enter Nama Tambak">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="luas_tambak">Luas Tambak</label>
                         <input type="text" name="luas_tambak" class="form-control" id="text" placeholder="Enter Luas Tambak">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="kedalaman">Kedalaman</label>
                         <input type="text" name="kedalaman" class="form-control" id="text" placeholder="Enter Kedalaman">
                     </div>
-
-                    <div class="form-group">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group">
                         <label for="kapasitas_ikan">Kapasitas Ikan</label>
                         <input type="text" name="kapasitas_ikan" class="form-control" id="text" placeholder="Enter Kapasitas Ikan">
                     </div>
 
-                    <div class="form-group">
-                        <label for="gambar_tambak">Gambar Tambak</label>
-                        <input type="file" name="gambar_tambak" class="form-control">
-                    </div>
-
-                    <div class="form-group">
+                    <div class="col-md-6 form-group">
                         <label for="status">Status</label>
                         <select name="status" class="form-control">
                             <option value="1">Aktif</option>
                             <option value="0">Tidak Aktif</option>
                         </select>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="gambar_tambak">Gambar Tambak</label>
+                        <input type="file" name="gambar_tambak" class="form-control">
                     </div>
 
                     <div class="form-group">

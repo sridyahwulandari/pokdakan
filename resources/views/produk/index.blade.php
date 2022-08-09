@@ -31,14 +31,12 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Kategori</th>
-                                <th>Nama Produk</th>
                                 <th>Jenis</th>
-                                <th>Merk</th>
-                                <th>Kondisi</th>
-                                <th>Berat</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
+                                <th>Kondisi</th>
                                 <th>Gambar Produk</th>
                                 <th>Action</th>
                             </tr>
@@ -46,14 +44,18 @@
                         <tbody>
                             @forelse ($produk as $row)
                             <tr>
+                                <td>{{ $loop->iteration ?? '' }}</td>
                                 <td>{{ $row->supplier->bahan_baku }}</td>
-                                <td>{{ $row->nama_produk }}</td>
                                 <td>{{ $row->jenis }}</td>
-                                <td>{{ $row->merk }}</td>
-                                <td>{{ $row->kondisi }}</td>
-                                <td>{{ $row->berat }}</td>
                                 <td>Rp. {{ number_format($row->harga) }}</td>
                                 <td>{{ $row->stok }}</td>
+                                <td>
+                                    @if ($row->kondisi == '1')
+                                        <button class="btn btn-success btn-round">Tersedia</button>
+                                        @else
+                                        <button class="btn btn-darge btn-round">Habis</button>
+                                        @endif
+                                </td>
                                 <td><img src=" {{ asset('uploads/' . $row->gambar_produk_supplier) }} " width="100"></td>
                                 <td>
                                     <div class="form-button-action">
@@ -71,10 +73,10 @@
                                         <form action="{{ route('produk.destroy', $row->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </form>
+                                            <button data-toggle="tooltip" title="" class="btn btn-link btn-danger btn-lg" data-original-title="Hapus Supplier">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                            </form>
                                         @endcan
                                     </div>
                                 </td>

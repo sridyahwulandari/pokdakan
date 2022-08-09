@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('judul');
+            $table->string('slug');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
             $table->string('lokasi');

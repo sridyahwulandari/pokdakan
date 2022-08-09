@@ -81,9 +81,10 @@
 </div> --}}
 
 <!-- Customized Card -->
+<div class="page-inner">
 <div class="row ">
     @foreach ($produk as $key => $row)
-    <div class="col-md-4 mt-3">
+    <div class="col-md-3 mt-3">
         <div class="card card-post card-round">
             <img class="card-img-top" src="{{ asset('uploads/' . $row->gambar_produk_supplier) }} " alt="Card image cap">
             <div class="card-body">
@@ -94,12 +95,13 @@
                         {{$row->nama_produk}}
                     </a>
                 </h3>
-                <p class="card-text">{!!$row->deskripsi!!}</p>
+                {{-- <p class="card-text">{!!$row->deskripsi!!}</p> --}}
                 <a href="{{ route('produk.show', $row->id)}}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
             </div>
         </div>
     </div>
     @endforeach
+</div>
 </div>
 
 <div class="text-center mt-4">

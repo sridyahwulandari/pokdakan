@@ -22,63 +22,72 @@
                 <form method="post" action="{{ route('produk.update', $produk->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="supplier">Supplier</label>
 
-                    <div class="form-group">
-                        <label for="supplier">Supplier</label>
-
-                        <select name="supplier_id" class="form-control">
-                            @foreach ($supplier as $row)
-                            @if ($row->id == $produk->supplier_id)
-                            <option value={{ $row->id }} selected='selected'> {{ $row->bahan_baku }}</option>
-                            @else
-                            <option value="{{ $row->id }}">
-                                {{ $row->bahan_baku }}</option>
-                                
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
+                            <select name="supplier_id" class="form-control">
+                                @foreach ($supplier as $row)
+                                @if ($row->id == $produk->supplier_id)
+                                <option value={{ $row->id }} selected='selected'> {{ $row->bahan_baku }}</option>
+                                @else
+                                <option value="{{ $row->id }}">
+                                    {{ $row->bahan_baku }}</option>
+                                    
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
                     
-                    <div class="form-group">
-                        <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" class="form-control" id="text" 
-                        value="{{ $produk->nama_produk }}">
+                        <div class="col-md-6 form-group">
+                            <label for="nama_produk">Nama Produk</label>
+                            <input type="text" name="nama_produk" class="form-control" id="text" 
+                            value="{{ $produk->nama_produk }}">
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="jenis">Jenis</label>
+                            <input type="text" name="jenis" class="form-control" id="text" 
+                            value="{{ $produk->jenis }}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="jenis_pakan">Jenis Pakan</label>
-                        <input type="text" name="jenis_pakan" class="form-control" id="text" 
-                        value="{{ $produk->jenis_pakan }}">
+                        <div class="col-md-4 form-group">
+                            <label for="merk">Merk</label>
+                            <input type="text" name="merk" class="form-control" id="text" 
+                            value="{{ $produk->merk }}">
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label for="kondisi">Kondisi</label>
+                            <select name="kondisi" class="form-control">
+                                <option value="1" {{ $produk->kondisi == '1' ? 'selected' : ''}}>
+                                    Tersedia
+                                </option>
+                                <option value="0"{{ $produk->kondisi == '0' ? 'selected' : ''}}>
+                                    Habis
+                                </option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="berat">Berat</label>
+                            <input type="text" name="berat" class="form-control" id="text" 
+                            value="{{ $produk->berat }}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="merk">Merk</label>
-                        <input type="text" name="merk" class="form-control" id="text" 
-                        value="{{ $produk->merk }}">
-                    </div>
+                        <div class="col-md-4 form-group">
+                            <label for="harga">Harga</label>
+                            <input type="text" name="harga" class="form-control" id="text" 
+                            value="{{ $produk->harga }}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="kondisi">Kondisi</label>
-                        <input type="text" name="kondisi" class="form-control" id="text" 
-                        value="{{ $produk->kondisi }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="berat">Berat</label>
-                        <input type="text" name="berat" class="form-control" id="text" 
-                        value="{{ $produk->berat }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="harga">Harga</label>
-                        <input type="text" name="harga" class="form-control" id="text" 
-                        value="{{ $produk->harga }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="stok">Stok</label>
-                        <input type="text" name="stok" class="form-control" id="text" 
-                        value="{{ $produk->stok }}">
+                        <div class="col-md-4 form-group">
+                            <label for="stok">Stok</label>
+                            <input type="text" name="stok" class="form-control" id="text" 
+                            value="{{ $produk->stok }}">
+                        </div>
                     </div>
 
 

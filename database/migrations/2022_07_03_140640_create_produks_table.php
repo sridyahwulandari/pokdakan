@@ -19,9 +19,9 @@ class CreateProduksTable extends Migration
             $table->integer('user_id');
             $table->string('nama_produk');
             $table->string('slug');
-            $table->string('jenis_pakan');
+            $table->string('jenis');
             $table->string('merk');
-            $table->string('kondisi');
+            $table->integer('kondisi');
             $table->string('berat');
             $table->string('harga');
             $table->string('stok');

@@ -42,6 +42,7 @@ Route::get('/produk-front', [FrontController::class, 'produkFront']);
 Route::get('/produk-front-detail/{slug}', [FrontController::class, 'produkFrontDetail'])->name('produk-front-detail');
 Route::get('/jadwal-front', [FrontController::class, 'jadwalFront']);
 Route::get('/event-front', [FrontController::class, 'eventFront']);
+Route::get('/event-front-detail/{slug}', [FrontController::class, 'eventFrontDetail'])->name('event-front-detail');
 Route::get('/tentang-kami', [FrontController::class, 'tentang']);
 Route::get('/formemail', [FrontController::class, 'formemail']);
 Route::post('/kirim', [FrontController::class, 'kirim']);
@@ -71,7 +72,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('tambak', 'TambakController');
     Route::resource('jadwal', 'JadwalController');
     Route::resource('event', 'EventController');
-    Route::resource('history', 'HistoryController');
+    Route::get('listevent', 'EventController@listevent')->name('event.listevent');
+    Route::resource('histori', 'HistoriController');
     Route::resource('aktivitas', 'AktivitasController');
     Route::post('aktivitas/export-pdf', [AktivitasController::class, 'pdf']);
     Route::post('aktivitas/export-pdf-aksi', [AktivitasController::class, 'pdfAksi']);

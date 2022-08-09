@@ -14,7 +14,7 @@
 			<div class="card full-height">
 				<div class="card-header">
 					<div class="card-head-row">
-						<div class="card-title">Edit Event {{ $event->kode_tambak}}</div>
+						<div class="card-title">Edit Event</div>
                         <a href="{{ route('event.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
 					</div>
 				</div>
@@ -22,45 +22,54 @@
                 <form method="post" action="{{ route('event.update', $event->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 form-group">
                         <label for="judul">Judul</label>
                         <input type="text" name="judul" class="form-control" id="text" 
                         value="{{ $event->judul }}">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="tgl_mulai">Tanggal Mulai</label>
                         <input type="date" name="tgl_mulai" class="form-control" id="text" 
                         value="{{ $event->tgl_mulai }}">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="tgl_selesai">Tanggal Selesai</label>
                         <input type="date" name="tgl_selesai" class="form-control" id="text" 
                         value="{{ $event->tgl_selesai }}">
                     </div>
-
-                    <div class="form-group">
+                </div>
+                <div class="row">
+                    <div class="col-md-8 form-group">
                         <label for="lokasi">Lokasi</label>
                         <input type="text" name="lokasi" class="form-control" id="text" 
                         value="{{ $event->lokasi }}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <textarea name="deskripsi" id="editor1" class="form-control">{{ $event->deskripsi }}</textarea>
+                    <div class="col-md-4 form-group">
+                        <label for="status">Status</label>
+                        <select name="status" class="form-control">
+                            <option value="1" {{ $event->status == '1' ? 'selected' : ''}}>
+                                Aktif
+                            </option>
+                            <option value="0"{{ $event->status == '0' ? 'selected' : ''}}>
+                                Tidak Aktif
+                            </option>
+                        </select>
                     </div>
+                </div>
 
                 <div class="row">
-                    <div class="col-md-8 form-group">
+                    <div class="col-md-4 form-group">
                         <label for="produk_dijual">Produk Yang Dijual</label>
                         <input type="text" name="produk_dijual" class="form-control" id="text" 
                         value="{{ $event->produk_dijual }}">
                     </div>
 
                     <div class="col-md-4 form-group">
-                        <label for="berat">Status</label>
+                        <label for="berat">Berat</label>
                         <select name="berat" class="form-control">
                             <option value="1" {{ $event->berat == '1' ? 'selected' : ''}}>
                                 Kg
@@ -70,13 +79,18 @@
                             </option>
                         </select>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="harga">Harga</label>
-                    <input type="text" name="harga" class="form-control" id="text" 
-                    value="{{ $event->harga }}">
+                    <div class="col-md-4 form-group">
+                        <label for="harga">Harga</label>
+                        <input type="text" name="harga" class="form-control" id="text" 
+                        value="{{ $event->harga }}">
+                    </div>
                 </div>
+                
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea name="deskripsi" id="editor1" class="form-control">{{ $event->deskripsi }}</textarea>
+                    </div>
 
                 <div class="form-group">
                     <label for="gambar_event">Gambar event</label>
@@ -86,19 +100,8 @@
                     <img src=" {{ asset('uploads/' . $event->gambar_event) }} " width="100">
                 </div>
 
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status" class="form-control">
-                        <option value="1" {{ $tambak->status == '1' ? 'selected' : ''}}>
-                            Aktif
-                        </option>
-                        <option value="0"{{ $tambak->status == '0' ? 'selected' : ''}}>
-                            Tidak Aktif
-                        </option>
-                    </select>
-                </div>
-
-
+                
+                    
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" type="submit">Save</button>
                         <button class="btn btn-primary btn-sm" type="reset">Reset</button>

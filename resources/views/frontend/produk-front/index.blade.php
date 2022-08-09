@@ -9,17 +9,27 @@
 
     <div class="row gy-4">
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-2 col-md-6">
         <div class="count-box">
           <i class="bi bi bi-boxes" style="color: #15be56;"></i>
           <div>
             <span data-purecounter-start="0" data-purecounter-end="{{ $produktotal}}" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Produk Supplier</p>
+            <p>Produk</p>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-2 col-md-6">
+        <div class="count-box">
+          <i class="bi bi bi-boxes" style="color: #1597be;"></i>
+          <div>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $produktotal}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Event</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
         <div class="count-box">
           <i class="bi bi-emoji-smile"></i>
           <div>
@@ -29,7 +39,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-2 col-md-6">
         <div class="count-box">
           <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
           <div>
@@ -39,7 +49,7 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-2 col-md-6">
         <div class="count-box">
           <i class="bi bi-people" style="color: #bb0852;"></i>
           <div>
@@ -70,7 +80,7 @@
             <div class="post-img"><img src="{{ asset('uploads/'. $row->gambar_produk_supplier)}}" class="img-fluid" alt="" width="400" height="400"></div>
             <span class="post-date">{{ $row->created_at }}</span>
             <h3 class="post-title">{{ $row->nama_produk }}</h3>
-            <a href="{{ route('produk-front-detail', $row->slug)}}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            <a href="{{ route('produk-front-detail', $row->slug)}}" class="readmore stretched-link mt-auto"><span>Detail</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
 

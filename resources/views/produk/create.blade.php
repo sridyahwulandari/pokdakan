@@ -21,50 +21,59 @@
 				<div class="card-body">
                 <form method="post" action="{{ route('produk.store') }}" enctype="multipart/form-data">
                     @csrf
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="supplier">Kategori</label>
+                            <select name="supplier_id" class="form-control">
+                                @foreach ($supplier as $row)
+                                    <option value="{{ $row->id }}">{{ $row->bahan_baku }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-8 form-group">
+                            <label for="nama_produk">Nama Produk</label>
+                            <input type="text" name="nama_produk" class="form-control" id="text" placeholder="Enter Nama Produk">
+                        </div>
+                    </div>
                     
-                    <div class="form-group">
-                        <label for="supplier">Kategori</label>
-                        <select name="supplier_id" class="form-control">
-                            @foreach ($supplier as $row)
-                                <option value="{{ $row->id }}">{{ $row->bahan_baku }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="jenis">Jenis</label>
+                            <input type="text" name="jenis" class="form-control" id="text" placeholder="Enter Jenis">
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label for="merk">Merk</label>
+                            <input type="text" name="merk" class="form-control" id="text" placeholder="Enter Merk">
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label for="kondisi">Kondisi</label>
+                            <select name="kondisi" class="form-control">
+                                <option value="1">Tersedia</option>
+                                <option value="0">Habis</option>
+                            </select>
+                        </div>
                     </div>
+
                     
-                    <div class="form-group">
-                        <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" class="form-control" id="text" placeholder="Enter Nama Produk">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jenis_pakan">Jenis Pakan</label>
-                        <input type="text" name="jenis_pakan" class="form-control" id="text" placeholder="Enter Jenis Pakan">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="merk">Merk</label>
-                        <input type="text" name="merk" class="form-control" id="text" placeholder="Enter Merk">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="kondisi">Kondisi</label>
-                        <input type="text" name="kondisi" class="form-control" id="text" placeholder="Enter Kondisi">
-                    </div>
-
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 form-group">
                         <label for="berat">Berat</label>
                         <input type="text" name="berat" class="form-control" id="text" placeholder="Enter Berat">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="harga">Harga</label>
                         <input type="text" name="harga" class="form-control" id="text" placeholder="Enter Harga">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-4 form-group">
                         <label for="stok">Stok</label>
                         <input type="text" name="stok" class="form-control" id="text" placeholder="Enter Stok">
                     </div>
+                </div>
 
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>

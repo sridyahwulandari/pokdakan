@@ -25,17 +25,15 @@
                         <div class="col-md-8 form-group">
                             <form action="/aktivitas/export-pdf" method="post">
                                 @csrf
-                            <input type="date" name="mulai" id="" class="col-md-4 form-control">
+                            <input type="date" name="mulai" id="" class="col-md-4 form-control" required>
                             <br>
-                            <input type="date" name="akhir" id="" class="col-md-4 form-control">
+                            <input type="date" name="akhir" id="" class="col-md-4 form-control" required>
                             <br>
                             <button class="btn btn-primary" type="submit">Export</button>
                             {{-- <a href=""><button class="btn btn-success">Export</button></a> --}}
                             </form>
                         </div>
-                    </div>
 
-                    <div class="row">
                         <div class="col-md-4 form-group">
                             <form action="aktivitas/export-pdf-aksi" method="post">
                                 @csrf
@@ -45,9 +43,14 @@
                                 <option value="pembesaaran">Pembesaran</option>
                                 <option value="panen">Panen</option>
                             </select>
+                            <br>
                             <button class="btn btn-primary" type="submit">Export</button>
                         </form>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        
                     </div>
                     
                     <div class="table-responsive">

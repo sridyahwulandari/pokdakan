@@ -12,7 +12,7 @@ class Produk extends Model
     protected $table = 'produks';
 
     protected $fillable = [
-         'user_id', 'supplier_id', 'nama_produk', 'slug', 'jenis_pakan', 'merk', 'kondisi', 'berat', 'harga', 'stok', 'deskripsi', 'gambar_produk_supplier'
+         'user_id', 'supplier_id', 'nama_produk', 'slug', 'jenis', 'merk', 'kondisi', 'berat', 'harga', 'stok', 'deskripsi', 'gambar_produk_supplier'
     ];
 
     protected $hidden = [];

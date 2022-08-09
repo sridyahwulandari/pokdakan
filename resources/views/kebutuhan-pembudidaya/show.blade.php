@@ -12,15 +12,31 @@
 	<div class="row">
         <div class="col-md-4">
             <div class="card card-post card-round">
-                <img class="card-img-top" src="{{ asset('uploads/' . $produk->gambar_produk_supplier) }}" alt="Card image cap">
+                <h3>Detail Supplier</h3>
+                <img class="card-img-top" src="{{ asset('uploads/' . auth()->user()->foto) }}" alt="Card image cap">
                 <div class="card-body">
                     <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/profile2.jpg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="info-post ml-2">
-                            <p class="username">{{ $produk->users->name }}</p>
-                            <p class="date text-muted">{{ $produk->users->telepon }}</p>
+                        <div class="col-lg-12">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Nama Supplier</td>
+                                        <td>:</td>
+                                        <td>{{ $kebutuhanpembudidaya->users->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Telepon / Wa</td>
+                                        <td>:</td>
+                                        <td>{{ $kebutuhanpembudidaya->users->telepon }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alamat</td>
+                                        <td>:</td>
+                                        <td>{{ $kebutuhanpembudidaya->users->alamat }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="https://api.whatsapp.com/send?phone={{ $kebutuhanpembudidaya->users->telepon }}&text=Hallo%20Minat"><img src="{{ asset('img/hubungi-kami.png')}}" width="250px"></a>
                         </div>
                     </div>
                 </div>
@@ -30,96 +46,48 @@
 			<div class="card full-height">
 				<div class="card-header">
 					<div class="card-head-row">
-						<div class="card-title">Detail Produk {{ $produk->jenis_ikan}}</div>
-                        <a href="{{ route('produk.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
+						<div class="card-title">Detail Kebutuhan Pembudidaya {{ $kebutuhanpembudidaya->jenis}}</div>
 					</div>
 				</div>
 				<div class="card-body">
             <div class="col-lg-12">
-                <form method="post" action="" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="supplier">Supplier</label>
-
-                        <select name="supplier_id" class="form-control">
-                            @foreach ($supplier as $row)
-                            @if ($row->id == $produk->supplier_id)
-                            <option value={{ $row->id }} selected='selected'> {{ $row->bahan_baku }}</option>
-                            @else
-                            <option value="{{ $row->id }}">
-                                {{ $row->bahan_baku }}</option>
-                                
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="jenis_pakan">Jenis Pakan</label>
-                        <input type="text" name="jenis_pakan" class="form-control" id="text" 
-                        value="{{ $produk->jenis_pakan }}">
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" class="form-control" id="text" 
-                        value="{{ $produk->nama_produk }}">
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8 form-group">
-                            <label for="merk">Merk</label>
-                            <input type="text" name="merk" class="form-control" id="text" 
-                            value="{{ $produk->merk }}">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label for="kondisi">Kondisi</label>
-                            <input type="text" name="kondisi" class="form-control" id="text" 
-                            value="{{ $produk->kondisi }}">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 form-group">
-                            <label for="berat">Berat</label>
-                            <input type="text" name="berat" class="form-control" id="text" 
-                            value="{{ $produk->berat }}">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label for="harga">Harga</label>
-                            <input type="text" name="harga" class="form-control" id="text" 
-                            value="{{ $produk->harga }}">
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label for="stok">Stok</label>
-                            <input type="text" name="stok" class="form-control" id="text" 
-                            value="{{ $produk->stok }}">
-                        </div>
-                    </div>
-                    
-                </form>
+                <table class="table table-striped mt-3">
+                    <tbody>
+                        <tr>
+                            <td>Kategori Supplier</td>
+                            <td>:</td>
+                            <td>{{ $kebutuhanpembudidaya->supplier->bahan_baku }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kategori Pembudidaya</td>
+                            <td>:</td>
+                            <td>{{ $kebutuhanpembudidaya->pembudidaya->kategori_pembudidaya }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Kebutuhan</td>
+                            <td>:</td>
+                            <td>{{date('d-m-Y',strtotime($kebutuhanpembudidaya->tgl_kebutuhan)) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>:</td>
+                            <td>{{ $kebutuhanpembudidaya->nama }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jenis</td>
+                            <td>:</td>
+                            <td>{{ $kebutuhanpembudidaya->jenis }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah</td>
+                            <td>:</td>
+                            <td>{{ $kebutuhanpembudidaya->jumlah }}</td>
+                        </tr>
+                    </tbody>
+                </table>
 				</div>
 			</div>
 		</div>
 	</div>
-    <div class="col-md-12">
-        <div class="card full-height">
-            <div class="card-body">
-            <form method="post" action="" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-
-                <div class="form-group">
-                    <div class="card-title">Deskripsi Produk</div>
-                    <br>
-                    <label for="deskripsi">{!! $produk->deskripsi !!}</label>
-                </div>
-                
-            </form>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

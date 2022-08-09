@@ -36,7 +36,6 @@
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Lokasi</th>
-                                <th>Deskripsi</th>
                                 <th>Produk Dijual</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
@@ -54,7 +53,6 @@
                                 <td>{{ $row->tgl_mulai }}</td>
                                 <td>{{ $row->tgl_selesai }}</td>
                                 <td>{{ $row->lokasi }}</td>
-                                <td>{!! $row->deskripsi !!}</td>
                                 <td>{{ $row->produk_dijual }}</td>
                                 <td>Rp. {{ number_format($row->harga) }}</td>
                                 <td><img src=" {{ asset('uploads/' . $row->gambar_event) }} " width="100"></td>

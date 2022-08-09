@@ -21,8 +21,8 @@
 				<div class="card-body">
                 <form method="post" action="{{ route('kebutuhan-pengepul.store') }}" enctype="multipart/form-data">
                     @csrf
-                    
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6 form-group">
                         <label for="pengepul">Pengepul</label>
                         <select name="pengepul_id" class="form-control">
                             @foreach ($pengepul as $row)
@@ -31,7 +31,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-6 form-group">
                         <label for="pembudidaya">Kategori Budidaya</label>
                         <select name="pembudidaya_id" class="form-control">
                             @foreach ($pembudidaya as $row)
@@ -39,28 +39,29 @@
                             @endforeach
                         </select>
                     </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="tgl_kebutuhan">Tanggal Kebutuhan</label>
-                        <input type="date" name="tgl_kebutuhan" class="form-control" id="text" placeholder="Enter Tanggal Kebutuhan">
-                    </div>
+                </div>
 
-                    <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="tgl_kebutuhan">Tanggal Kebutuhan</label>
+                    <input type="date" name="tgl_kebutuhan" class="form-control" id="text" placeholder="Enter Tanggal Kebutuhan">
+                </div>
+                    <div class="col-md-6 form-group">
                         <label for="nama">Nama</label>
                         <input type="text" name="nama" class="form-control" id="text" placeholder="Enter Nama">
                     </div>
-
-                    <div class="form-group">
+            </div>
+            <div class="row">
+                    <div class="col-md-6 form-group">
                         <label for="jenis">Jenis</label>
                         <input type="text" name="jenis" class="form-control" id="text" placeholder="Enter Jenis">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-md-6 form-group">
                         <label for="jumlah">Jumlah</label>
                         <input type="text" name="jumlah" class="form-control" id="text" placeholder="Enter Jumlah">
                     </div>
-
+            </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-sm" type="submit">Save</button>
                         <button class="btn btn-primary btn-sm" type="reset">Reset</button>

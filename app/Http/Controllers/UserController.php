@@ -90,6 +90,7 @@ class UserController extends Controller
             'alamat' => 'required',
             'telepon' => 'required',
             'foto' => 'mimes:png,jpg,jpeg',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
     
         $input = $request->all();
@@ -205,19 +206,61 @@ class UserController extends Controller
 
     public function postProfile(Request $request)
     {
+        // $user = auth()->user();
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users,email,'.$user->id,
+        //     // 'password' => 'confirmed',
+        //     // 'roles' => 'required',
+        //     'alamat' => 'required',
+        //     'telepon' => 'required',
+        //     'foto' => 'mimes:png,jpg,jpeg',
+            
+        // ]);
+    
+        // $input = $request->all();
+        // $input['foto'] = $request->file('foto')->store('foto');
+
+        // $user->update($request->all());
+        
+
+        // return redirect()->back()->with('success','Profile Berhasil Diubah');
         $user = auth()->user();
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            // 'password' => 'confirmed',
+            // 'roles' => 'required',
             'alamat' => 'required',
             'telepon' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
             'foto' => 'mimes:png,jpg,jpeg',
             
         ]);
-
-        $user->update($request->all());
+    
+        $input = $request->all();
+        $input['foto'] = $request->file('foto')->store('foto');
         
+        // if(!empty($input['password'])) { 
+        //     $input['password'] = FacadesHash::make($input['password']);
+        // } else {
+        //     $input = Arr::except($input, array('password'));    
+        // }
 
+        // if(!empty($request->file('foto'))) { 
+        //     $input['foto'] = $request->file('foto')->store('foto');
+        // } else {
+        //     $input['foto'] = $request->file('foto')->store('foto');
+        // }
+    
+        $user = User::find($user->id);
+        $user->update($input);
+
+        // FacadesDB::table('model_has_roles')
+        //     ->where('model_id', $id)
+        //     ->delete();
+    
+        // $user->assignRole($request->input('roles'));
+    
         return redirect()->back()->with('success','Profile Berhasil Diubah');
     }
 

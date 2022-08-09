@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -19,7 +20,7 @@ class EventController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:event-list|event-create|event-edit|event-delete', ['only' => ['index', 'show']]);
+         $this->middleware('permission:event-list|event-create|event-edit|event-delete|listevent', ['only' => ['index', 'show']]);
          $this->middleware('permission:event-create', ['only' => ['create', 'store']]);
          $this->middleware('permission:event-edit', ['only' => ['edit', 'update']]);
          $this->middleware('permission:event-delete', ['only' => ['destroy']]);
@@ -29,6 +30,15 @@ class EventController extends Controller
         $event = Event::where('user_id',auth()->user()->id)->get();
         $user = auth()->user();
         return view('event.index', compact('event'));
+        // $mytime = Carbon::now()->format('Y-m-d');
+        // echo $mytime;
+    }
+
+public function listevent()
+    {
+        $event = Event::all();
+        $user = auth()->user();
+        return view('event.listevent', compact('event'));
         // $mytime = Carbon::now()->format('Y-m-d');
         // echo $mytime;
     }
@@ -72,6 +82,7 @@ class EventController extends Controller
         ]);
         $data = $request->all();
         $data['user_id'] = Auth::id();
+        $data['slug'] = Str::slug($request->judul);
         $data['gambar_event'] = $request->file('gambar_event')->store('event');
         
 
@@ -100,6 +111,7 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
+        // $event = Event::all();
         $user = User::all();
         $tambak = Tambak::all();
 
@@ -124,6 +136,7 @@ class EventController extends Controller
             $event->update([
                 'user_id' => Auth::id(),
                 'judul' => $request->judul,
+                'slug' => Str::slug($request->judul),
                 'tgl_mulai' => $request->tgl_mulai,
                 'tgl_selesai' => $request->tgl_selesai,
                 'lokasi' => $request->lokasi,
@@ -141,6 +154,7 @@ class EventController extends Controller
             $event->update([
                 'user_id' => Auth::id(),
                 'judul' => $request->judul,
+                'slug' => Str::slug($request->judul),
                 'tgl_mulai' => $request->tgl_mulai,
                 'tgl_selesai' => $request->tgl_selesai,
                 'lokasi' => $request->lokasi,

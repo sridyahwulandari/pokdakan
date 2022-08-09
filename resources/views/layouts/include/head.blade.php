@@ -50,6 +50,19 @@
          margin: auto;
          width: 40%;
          }
+
+        .project-info-box {
+        margin: 15px 0;
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 5px;
+        }
+
+        .project-info-box p {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #d5dadb;
+        }
       </style>
 
 	<!-- Fonts and icons -->
@@ -63,6 +76,15 @@
 			}
 		});
 	</script>
+    <style type="text/css">
+        .left    { text-align: left;}
+        .right   { text-align: right;}
+        .center  { text-align: center;}
+        .justify { text-align: justify;}
+     </style>
+
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">

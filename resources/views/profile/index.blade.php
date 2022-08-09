@@ -13,7 +13,7 @@ Profile
                     <div class="card-header" style="background-image: url('../assets/img/blogpost.jpg')">
                         <div class="profile-picture">
                             <div class="avatar avatar-xl">
-                                <img src="{{ asset('img/avatar.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                                <img src="{{ asset('uploads/' . auth()->user()->foto) }}" alt="..." class="avatar-img rounded-circle">
                             </div>
                         </div>
                     </div>
@@ -40,12 +40,12 @@ Profile
                         <div>
 
                             <div>
-                                <form class="form-horizontal" method="POST" action="{{ route('user.postProfile') }}">
+                                <form class="form-horizontal" method="POST" action="{{ route('user.postProfile') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Name</label>
+                                                <label for="name">Nama</label>
                                                 <input type="text" name="name"  id="name" class="form-control @error('email') is-invalid @enderror" value="{{ auth()->user()->name }}" required placeholder="Name">
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@ Profile
                                             <div class="form-group">
                                                 <label for="email">Email Address</label>
                                                 <input type="email" name="email"  id="email" class="form-control @error('email') is-invalid @enderror" value="{{ auth()->user()->email }}" placeholder="E-mail Address">
-                                                @error('siteemail')
+                                                @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -87,6 +87,9 @@ Profile
                                             <div class="form-group">
                                                 <label for="foto">Foto</label>
                                                 <input type="file" name="foto" class="form-control">
+                                                <br>
+                                                <label for="gambar">Foto Saat Ini</label><br>
+                                                <img src="{{ asset('uploads/' . auth()->user()->foto) }} " width="100">
                                             </div>
 
                                         </div>

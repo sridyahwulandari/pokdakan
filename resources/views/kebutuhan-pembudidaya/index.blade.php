@@ -31,6 +31,7 @@
 					<table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Kategori Produk</th>
                                 <th>Kategori Budidaya</th>
                                 <th>Tanggal Kebutuhan</th>
@@ -43,6 +44,7 @@
                         <tbody>
                             @forelse ($kebutuhanpembudidaya as $row)
                             <tr>
+                                <td>{{ $loop->iteration ?? '' }}</td>
                                 <td>{{ $row->supplier->bahan_baku }}</td>
                                 <td>{{ $row->pembudidaya->kategori_pembudidaya }}</td>
                                 <td>{{ $row->tgl_kebutuhan }}</td>

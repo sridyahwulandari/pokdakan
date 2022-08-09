@@ -31,12 +31,43 @@ class KebutuhanPembudidayaController extends Controller
         return view('kebutuhan-pembudidaya.index', compact('kebutuhanpembudidaya'));
     }
 
-    public function detailkebutuhanpembudidaya()
+    // public function detailkebutuhanpembudidaya()
+    // {
+    //     $kebutuhanpembudidaya = KebutuhanPembudidaya::all();
+    //     $user = auth()->user();
+    //     return view('kebutuhan-pembudidaya.detail', compact('kebutuhanpembudidaya'));
+    // }
+
+    public function detailkebutuhanpembudidaya(Request $request)
     {
-        $kebutuhanpembudidaya = KebutuhanPembudidaya::all();
-        $user = auth()->user();
-        return view('kebutuhan-pembudidaya.detail', compact('kebutuhanpembudidaya'));
+        if($request->more_view){
+            $kebutuhanpembudidaya = KebutuhanPembudidaya::all();
+            $user = auth()->user();
+            $kebutuhanpembudidayatotal = KebutuhanPembudidaya::count();
+            $usertotal = User::count();;
+        $totalKb = $request->more_view * 3;
+        $kebutuhanpembudidaya = KebutuhanPembudidaya::paginate($totalKb);
+        return view('kebutuhan-pembudidaya.detail', [
+            'kebutuhanpembudidaya' => $kebutuhanpembudidaya,
+            'kebutuhanpembudidayatotal' => $kebutuhanpembudidayatotal,
+            'usertotal' => $usertotal,
+            'total_view' => ($request->more_view) ? $totalKb : '9',
+        ]);
+        }else{
+            $kebutuhanpembudidayatotal = KebutuhanPembudidaya::count();
+        $usertotal = User::count();
+// dd($produktotal);
+        $kebutuhanpembudidaya = KebutuhanPembudidaya::paginate(3);
+        return view('kebutuhan-pembudidaya.detail', [
+            'kebutuhanpembudidaya' => $kebutuhanpembudidaya,
+            'kebutuhanpembudidayatotal' => $kebutuhanpembudidayatotal,
+            'usertotal' => $usertotal,
+            'total_view' => ($request->more_view) ? $request->more_view : '9',
+        ]);
+        }
+        // return view('home', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.

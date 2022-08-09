@@ -19,7 +19,7 @@
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src="{{ asset('img/logo.jpg')}}" alt="logo">
+						<img src="{{ asset('img/logo_ikan.png')}}" alt="logo">
 					</div>
 					@if(Session::has('success'))
 
